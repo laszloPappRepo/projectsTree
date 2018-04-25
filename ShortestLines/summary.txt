@@ -1,0 +1,30 @@
+﻿    
+
+
+	The application reads the file and the InputfileReader class's readfileData method split
+	the lines of string and then it parse them into double values. It also provides an integer as a line counter.
+	At the end, the readfileData method saves the lineCounter value and the list of n coordinates into a list of Point-type objects.
+	The Point class determines the structure of a point object.
+	
+	The closestPointPair method gets a list of points as an input parameter and inside a nested loop it compares
+	every point with every other point and calculates the distances (using the distanceCalculator method of the Point class).
+	(If I understand correctly the asymptotical running time of this algorithm is O(N²)).
+
+	Calculate the distances between two points happens inside the Point class's 
+	distanceCalculator method by the Euclidean distance principle and the method return
+	double value of the distance.
+	By that closestPointPair method be able to find the two point objects with the shortest 
+	distance between them. 
+	The method returns the list which always has only the two Point elements.
+
+	The OutputWriter class's writeOutputData method save the list of point into a .txt
+	file in the desired form if it has a valid filename and the list is not empty.
+
+	Based on my current knowledge I cannot fully calculate the asymptotical running time of this application. I estimate that because of the nested for loop in the
+	closestPointPair which has a O(N²) notation and the other for loops (which each have O(N) running time) I can only assume that the application itself has a running time around O(N²).
+
+
+	
+	
+	
+	
