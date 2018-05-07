@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--suppress ALL -->
+<html lang="hu" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../static/style.css"/>
@@ -8,25 +9,43 @@
     <title>Main</title>
 </head>
 <body>
-<form th:action="@{/getCoordinates}" th:object="${search}" method="get">
-    <input type="search" name="search" placeholder="Negyzetmeter"/>
-    <input type="search" name="search" placeholder="elfogadott formatum: **.****"/>
-    <input type="search" name="search" placeholder="elfogadott formatum: **.****"/>
-    <button type="submit" value="Submit">kereses</button>
+<h1>Ingatlan árkalkulátor</h1>
+
+<form th:action="@{/calculatePrice}" th:object="${search}" method="post">
+    <h3>Kérem adja meg az ingatlan négyzetméterét!</h3>
+        <input type="text" name="givenSquareMeter" placeholder="Negyzetmeter"/>
+    <h3>Kérem adja meg az ingatlan szélessegi koordinátáját!</h3>
+        <div><input type="radio" name="latitudeCompassPoint" value="E" checked="checked" />Kelet
+            <input type="radio" name="latitudeCompassPoint" value="W" />Nyugat
+        </div>
+        <input type="number" name="latitudeDegree" placeholder="Fok"/>
+        <input type="number" name="latitudeMinute" placeholder="Perc"/>
+        <input type="text" name="latitudeSecond" placeholder="Masodperc"/>
+    <h3>Kérem adja meg az ingatlan hosszúsági koordinátáját!</h3>
+        <div><input type="radio" name="longitudeCompassPoint" value="N" checked="checked" />Eszak
+            <input type="radio" name="longitudeCompassPoint" value="S" />Del
+        </div>
+        <input type="number" name="longitudeDegree" placeholder="Fok"/>
+        <input type="number" name="longitudeMinute" placeholder="Perc"/>
+        <input type="text" name="longitudeSecond" placeholder="Masodperc"/>
+        <button type="submit" value="Submit">Kalkulál</button>
 </form>
 
 <table class="table table-hover table-dark" style="font-size: small">
+    <h2>Kalkulált árak</h2>
     <thead>
     <tr>
-        <th scope="col" >Hosszusag</th>
-        <th scope="col" >Szelesseg</th>
-        <th scope="col" >Ar/m2</th>
+        <th scope="col" >Megadott négyzetméter</th>
+        <th scope="col" >Megadott szélessegi koordináta</th>
+        <th scope="col" >Megadott hosszúsági koordináta</th>
+        <th scope="col" >Az ingatlan kalkulált ára</th>
     </tr>
     </thead>
-    <tr th:each="realEstate : ${list}">
-        <td th:text="${realEstate.longitude}" ></td>
-        <td th:text="${realEstate.latitude}" ></td>
-        <td th:text="${realEstate.averageSquareMeterPrice}" ></td>
+    <tr th:each="calculationResultLog : ${calculationResultLog}">
+        <td th:text="${calculationResultLog.givenSquareMeter}" ></td>
+        <td th:text="${calculationResultLog.latitudeToString()}" ></td>
+        <td th:text="${calculationResultLog.longitudeToString()}" ></td>
+        <td th:text="${calculationResultLog.calculatedPrice}" ></td>
     </tr>
     <tr th:each="err : ${error}">
         <td th:text="${err.error}"></td>

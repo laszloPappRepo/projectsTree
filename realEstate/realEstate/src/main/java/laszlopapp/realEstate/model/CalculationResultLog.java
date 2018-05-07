@@ -1,15 +1,13 @@
 package laszlopapp.realEstate.model;
 import laszlopapp.realEstate.service.CoordinateHelper;
-
 import javax.persistence.*;
 
 @Entity
-public class RealEstate {
+public class CalculationResultLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int averageSquareMeterPrice;
 
     private int latitudeDegree;
     private int latitudeMinute;
@@ -21,13 +19,15 @@ public class RealEstate {
     private double longitudeSecond;
     private String longitudeCompassPoint;
 
-    public RealEstate() {
+    private double givenSquareMeter;
+    private double calculatedPrice;
+
+    public CalculationResultLog() {
     }
 
-    public RealEstate(int averageSquareMeterPrice, int latitudeDegree, int latitudeMinute, double latitudeSecond,
-                      String latitudeCompassPoint, int longitudeDegree, int longitudeMinute, double longitudeSecond,
-                      String longitudeCompassPoint) {
-        this.averageSquareMeterPrice = averageSquareMeterPrice;
+    public CalculationResultLog(int latitudeDegree, int latitudeMinute, double latitudeSecond, String latitudeCompassPoint,
+                                int longitudeDegree, int longitudeMinute, double longitudeSecond, String longitudeCompassPoint,
+                                double givenSquareMeter, double calculatedPrice) {
         this.latitudeDegree = latitudeDegree;
         this.latitudeMinute = latitudeMinute;
         this.latitudeSecond = latitudeSecond;
@@ -36,6 +36,8 @@ public class RealEstate {
         this.longitudeMinute = longitudeMinute;
         this.longitudeSecond = longitudeSecond;
         this.longitudeCompassPoint = longitudeCompassPoint;
+        this.givenSquareMeter = givenSquareMeter;
+        this.calculatedPrice = calculatedPrice;
     }
 
     public Long getId() {
@@ -44,14 +46,6 @@ public class RealEstate {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getAverageSquareMeterPrice() {
-        return averageSquareMeterPrice;
-    }
-
-    public void setAverageSquareMeterPrice(int averageSquareMeterPrice) {
-        this.averageSquareMeterPrice = averageSquareMeterPrice;
     }
 
     public int getLatitudeDegree() {
@@ -118,6 +112,22 @@ public class RealEstate {
         this.longitudeCompassPoint = longitudeCompassPoint;
     }
 
+    public double getGivenSquareMeter() {
+        return givenSquareMeter;
+    }
+
+    public void setGivenSquareMeter(double givenSquareMeter) {
+        this.givenSquareMeter = givenSquareMeter;
+    }
+
+    public double getCalculatedPrice() {
+        return calculatedPrice;
+    }
+
+    public void setCalculatedPrice(double calculatedPrice) {
+        this.calculatedPrice = calculatedPrice;
+    }
+
     public Double getDoubleFromLatitude(){
         return CoordinateHelper.decimalDegreeExchanger(this.latitudeDegree,
                 this.latitudeMinute, this.latitudeSecond, this.latitudeCompassPoint);
@@ -126,5 +136,19 @@ public class RealEstate {
     public Double getDoubleFromLongitude(){
         return CoordinateHelper.decimalDegreeExchanger(this.longitudeDegree,
                 this.longitudeMinute, this.longitudeSecond, this.longitudeCompassPoint);
+    }
+
+    public String latitudeToString() {
+        return latitudeCompassPoint + " " +
+                latitudeDegree + "° " +
+                latitudeMinute + "' " +
+                latitudeSecond + "''";
+    }
+
+    public String longitudeToString() {
+        return longitudeCompassPoint + " " +
+                longitudeDegree + "° " +
+                longitudeMinute + "' " +
+                longitudeSecond + "''";
     }
 }

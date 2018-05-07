@@ -1,39 +1,29 @@
-body{
+body {
     width: auto;
     height: auto;
-    background-color: grey;
+    background-color: red;
 }
 
-input[type=text], select {
-    width: 40%;
-    padding: 12px 20px;
+input[type=text] {
+    background-color: lightgrey;
+    width: 8%;
+    height: 6px;
+    padding: 8px 12px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid black;
-    border-radius: 8px;
     box-sizing: border-box;
+    border-radius: 8px;
 }
 
-input[type=search], select {
-    width: 40%;
-    height: 15px;
-    padding: 12px 20px;
+input[type=number] {
+    background-color: lightgrey;
+    width: 8%;
+    height: 6px;
+    padding: 8px 12px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid black;
-    border-radius: 8px;
     box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 40%;
-    background-color: rosybrown;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 8px;
 }
 
 input[type=submit]:hover {
@@ -41,16 +31,19 @@ input[type=submit]:hover {
 }
 
 div {
-    width: 400px;
+    width: 140px;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
 }
 
-a.one{
-    color: lavenderblush;
-    font-size: large;
+h3 {
+    width: auto;
+    border-radius: 5px;
+    padding: 10px;
 }
 
-div.link{
-    width: 200px;
+h1 {
+    width: auto;
+    border-radius: 5px;
+    padding: 10px;
 }

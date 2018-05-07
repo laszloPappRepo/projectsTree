@@ -1,43 +1,54 @@
 package laszlopapp.realEstate.controller;
-import laszlopapp.realEstate.model.ErrorMessage;
-import laszlopapp.realEstate.model.RealEstate;
-import laszlopapp.realEstate.repository.CoordinateRepository;
+
+import laszlopapp.realEstate.model.CalculationResultLog;
+import laszlopapp.realEstate.repository.CalculatedDataRepository;
+import laszlopapp.realEstate.repository.RealEstateRepository;
 import laszlopapp.realEstate.service.CalculateDistanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.thymeleaf.util.ListUtils;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collections;
+import javax.annotation.Resource;
 
 @Controller
 public class CoordinateController {
 
     @Autowired
-    CoordinateRepository coordinateRepository;
+    @Resource(name = "realEstateRepository")
+    private RealEstateRepository realEstateRepository;
 
     @Autowired
-    CalculateDistanceService calculateDistanceService;
+    private CalculatedDataRepository calculatedDataRepository;
 
-    RealEstate realEstate;
+    @Autowired
+    @Resource(name = "calculateDistanceService")
+    private CalculateDistanceService calculateDistanceService;
 
     @RequestMapping({"/"})
-    public String listOfRealEstates(Model model){
-        if (ListUtils.size(Collections.singletonList(coordinateRepository.findAll())) != 0) {
-            model.addAttribute("list", coordinateRepository.findAll());
-        }else {
-            return String.valueOf(new ErrorMessage("The database is empty"));
-        }
+    public String pageOfRealEstates(){
         return "index";
     }
 
-    @RequestMapping(value = "/getCoordinates", method = RequestMethod.GET)
-    public String getCoordinates(@PathVariable double latitude, @PathVariable double longitude){
-        calculateDistanceService.distance(latitude, longitude,
-                realEstate.getLatitude(), realEstate.getLongitude());
+    @RequestMapping(value = "/calculatePrice", method = RequestMethod.POST)
+    public String getCoordinates(Model model,
+                                 @RequestParam("givenSquareMeter") double givenSquareMeter,
+                                 @RequestParam("latitudeDegree") int latitudeDegree,
+                                 @RequestParam("latitudeMinute") int latitudeMinute,
+                                 @RequestParam("latitudeSecond") double latitudeSecond,
+                                 @RequestParam("latitudeCompassPoint") String latitudeCompassPoint,
+                                 @RequestParam("longitudeDegree") int longitudeDegree,
+                                 @RequestParam("longitudeMinute") int longitudeMinute,
+                                 @RequestParam("longitudeSecond") double longitudeSecond,
+                                 @RequestParam("longitudeCompassPoint") String longitudeCompassPoint)
+    {
+            CalculationResultLog calcData = new CalculationResultLog(latitudeDegree, latitudeMinute, latitudeSecond, latitudeCompassPoint, longitudeDegree,
+                    longitudeMinute, longitudeSecond, longitudeCompassPoint, givenSquareMeter, 0);
+            calcData = calculateDistanceService.closestPoints(calcData);
+            model.addAttribute("calculationResultLog", calcData);
+            calculatedDataRepository.save(calcData);
         return "index";
     }
 }
