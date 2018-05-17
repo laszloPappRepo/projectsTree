@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/library.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/id}" th:object="${search}" method="get">
+        <input type="search" name="search" placeholder="Search by id"/>
+        <button type="submit" value="Submit">Search by id</button>
+    </form>
+</div>
+<table class="table table-hover table-dark" style="font-size: small">
+    <thead>
+    <tr>
+        <th scope="col" >ID</th>
+    </tr>
+    </thead>
+    <tr th:each="heroResponse : ${list}">
+        <td>
+        <td th:text="${getId()}" ></td>
+    </tr>
+</table>
+</body>
+</html>
