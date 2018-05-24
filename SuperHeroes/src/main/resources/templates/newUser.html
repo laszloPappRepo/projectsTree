@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link href="../static/newUserStyle.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <title>Add additional books</title>
+</head>
+<body>
+<div class="link">
+    <nav>
+        <a class="nul" href="/">Back to the Login Page</a>
+    </nav>
+</div>
+<hi>Create account</hi>
+<div>
+    <form th:action="@{/createUser}" style="left: auto" th:object="${addUser}" method="post">
+        <input class="col-xs-4 input-sm" type="text" placeholder="username" th:field="*{username}" />
+        <input class="col-xs-4 input-sm" type="text" placeholder="password" th:field="*{password}" />
+        <button type="submit" value="submit" >Join the league</button>
+    </form>
+</div>
+</body>
+</html>

@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../static/library.css"/>
+    <link rel="stylesheet" href="../static/indexStyle.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
-    <title>Title</title>
+    <title>Main Page</title>
 </head>
 <body>
 <div>
-    <form th:action="@{/id}" th:object="${search}" method="get">
+    <form th:action="@{http://superheroapi.com/api/{id}}" th:object="${search}" method="get">
         <input type="search" name="search" placeholder="Search by id"/>
         <button type="submit" value="Submit">Search by id</button>
     </form>
@@ -20,9 +20,9 @@
         <th scope="col" >ID</th>
     </tr>
     </thead>
-    <tr th:each="heroResponse : ${list}">
+    <tr th:each="hero : ${list}">
         <td>
-        <td th:text="${getId()}" ></td>
+        <td th:text="${hero.id}" ></td>
     </tr>
 </table>
 </body>

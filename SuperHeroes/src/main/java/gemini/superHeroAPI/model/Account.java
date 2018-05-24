@@ -1,32 +1,24 @@
-package gemini.superHeroAPI.modell;
+package gemini.superHeroAPI.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Account {
 
     @Id
-    @GeneratedValue
-    private Long id;
-
     private String username;
 
     @JsonIgnore
     private String password;
 
-    private Account() { } // JPA only
+    public Account() { } // JPA only
 
-    public Account(final String username, final String password) {
+    public Account(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getUsername() {
@@ -35,6 +27,14 @@ public class Account {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
 

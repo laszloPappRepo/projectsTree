@@ -1,0 +1,58 @@
+body {
+    width: auto;
+    height: auto;
+    background-image:
+    url("https://orig00.deviantart.net/855e/f/2014/265/f/a/avengers_assemble_wallpaper_by_emrah007-d804y02.png");
+    background-repeat: no-repeat, repeat;
+}
+
+hi {
+    color: white;
+    font-size: 40px;
+    margin: 10%;
+    padding: 15px 32px;
+}
+
+table {
+    width: auto;
+    margin: auto;
+}
+
+form {
+    width: 300px;
+    margin: 10%;
+    color: white;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #334d4d;
+    font-size: 20px;
+}
+
+button {
+    background-color: #334d4d; /* Black */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    border-radius: 8px;
+}
+
+a.nul{
+    font-size: 14px;
+    margin 10%;
+    padding: 15px 32px;
+}
+
+div.link{
+    width: 200px;
+    margin 10%;
+}

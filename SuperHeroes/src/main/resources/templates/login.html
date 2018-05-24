@@ -2,23 +2,30 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../static/style.css"/>
+    <link rel="stylesheet" href="../static/loginStyle.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
     <title>Login Page</title>
 </head>
 <body>
+<hi>Superhero Game</hi>
 <form th:action="@{/login}" th:object="${search}" method="get">
-    <h3>Please type your Username!</h3>
     <input type="text" name="username" placeholder="username"/>
-    <h3>Please type your Password!</h3>
-    <input type="text" name="password" placeholder="password"/>
+    <input type="password" name="password" placeholder="password"/>
     <button type="submit" value="Submit">Submit</button>
 </form>
 <table>
-<tr th:each="err : ${error}">
-    <td th:text="${err.error}"></td>
-</tr>
+    <thead>
+    <tr>
+        <th scope="col" ></th>
+    </tr>
+    </thead>
+    <tr th:each="err : ${error}">
+        <td th:text="${err.error}"></td>
+    </tr>
 </table>
+<div class="link">
+    <nav><a class="nul" href="/newUser">Create new account</a></nav>
+</div>
 </body>
 </html>
