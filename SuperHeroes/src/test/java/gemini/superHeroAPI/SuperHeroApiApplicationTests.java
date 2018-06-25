@@ -12,5 +12,4 @@ public class SuperHeroApiApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }

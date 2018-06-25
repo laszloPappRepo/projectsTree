@@ -1,112 +1,156 @@
 package gemini.superHeroAPI.model;
+
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "response",
+        "id",
+        "name",
+        "powerstats",
+        "biography",
+        "appearance",
+        "work",
+        "connections",
+        "image"
+})
 @Entity
-public class HeroResponse {
+public class HeroResponse implements Serializable {
 
+    @JsonProperty("response")
     private String response;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @JsonProperty("id")
+    private String id;
+    @JsonProperty("name")
     private String name;
-    private HashMap<PowerStats, Integer> powerStats;
-    private HashMap<Biography, String> biography;
-    private HashMap<Appearance, String> appearance;
-    private HashMap<Work, String> work;
-    private HashMap<Connections, String> connections;
-    private String image;
+    @Transient
+    @JsonProperty("powerstats")
+    private PowerStats powerstats;
+    @Transient
+    @JsonProperty("biography")
+    private Biography biography;
+    @Transient
+    @JsonProperty("appearance")
+    private Appearance appearance;
+    @Transient
+    @JsonProperty("work")
+    private Work work;
+    @Transient
+    @JsonProperty("connections")
+    private Connections connections;
+    @Transient
+    @JsonProperty("image")
+    private Image image;
+    @Transient
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<>();
 
-    public HeroResponse() {
-    }
-
-    public HeroResponse(String response, Long id, String name, HashMap<PowerStats, Integer> powerStats,
-                        HashMap<Biography, String> biography, HashMap<Appearance, String> appearance,
-                        HashMap<Work, String> work, HashMap<Connections, String> connections, String image) {
-        this.response = response;
-        this.id = id;
-        this.name = name;
-        this.powerStats = powerStats;
-        this.biography = biography;
-        this.appearance = appearance;
-        this.work = work;
-        this.connections = connections;
-        this.image = image;
-    }
-
+    @JsonProperty("response")
     public String getResponse() {
         return response;
     }
 
+    @JsonProperty("response")
     public void setResponse(String response) {
         this.response = response;
     }
 
-    public Long getId() {
+    @JsonProperty("id")
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    @JsonProperty("id")
+    public void setId(String id) {
         this.id = id;
     }
 
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    public HashMap<PowerStats, Integer> getPowerStats() {
-        return powerStats;
+    @JsonProperty("powerstats")
+    public PowerStats getPowerstats() {
+        return powerstats;
     }
 
-    public void setPowerStats(HashMap<PowerStats, Integer> powerStats) {
-        this.powerStats = powerStats;
+    @JsonProperty("powerstats")
+    public void setPowerstats(PowerStats powerstats) {
+        this.powerstats = powerstats;
     }
 
-    public HashMap<Biography, String> getBiography() {
+    @JsonProperty("biography")
+    public Biography getBiography() {
         return biography;
     }
 
-    public void setBiography(HashMap<Biography, String> biography) {
+    @JsonProperty("biography")
+    public void setBiography(Biography biography) {
         this.biography = biography;
     }
 
-    public HashMap<Appearance, String> getAppearance() {
+    @JsonProperty("appearance")
+    public Appearance getAppearance() {
         return appearance;
     }
 
-    public void setAppearance(HashMap<Appearance, String> appearance) {
+    @JsonProperty("appearance")
+    public void setAppearance(Appearance appearance) {
         this.appearance = appearance;
     }
 
-    public HashMap<Work, String> getWork() {
+    @JsonProperty("work")
+    public Work getWork() {
         return work;
     }
 
-    public void setWork(HashMap<Work, String> work) {
+    @JsonProperty("work")
+    public void setWork(Work work) {
         this.work = work;
     }
 
-    public HashMap<Connections, String> getConnections() {
+    @JsonProperty("connections")
+    public Connections getConnections() {
         return connections;
     }
 
-    public void setConnections(HashMap<Connections, String> connections) {
+    @JsonProperty("connections")
+    public void setConnections(Connections connections) {
         this.connections = connections;
     }
 
-    public String getImage() {
+    @JsonProperty("image")
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    @JsonProperty("image")
+    public void setImage(Image image) {
         this.image = image;
     }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
 }

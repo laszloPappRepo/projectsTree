@@ -9,20 +9,23 @@
 </head>
 <body>
 <div>
-    <form th:action="@{http://superheroapi.com/api/{id}}" th:object="${search}" method="get">
-        <input type="search" name="search" placeholder="Search by id"/>
+    <form th:action="@{/id}" th:object="${id}" method="get">
+        <input type="text" name="id" placeholder="Search by id"/>
         <button type="submit" value="Submit">Search by id</button>
+    </form>
+    <form th:action="@{search/name}" th:object="${name}" method="get">
+        <input type="text" name="name" placeholder="Search by name"/>
+        <button type="submit" value="Submit">Search by name</button>
     </form>
 </div>
 <table class="table table-hover table-dark" style="font-size: small">
-    <thead>
-    <tr>
-        <th scope="col" >ID</th>
-    </tr>
-    </thead>
     <tr th:each="hero : ${list}">
-        <td>
-        <td th:text="${hero.id}" ></td>
+        <h2 style="color: lavenderblush">ID:</h2>
+        <h3 style="color: lavenderblush"><th:order th:text="${hero.id}" ></th:order></h3>
+        <h2 style="color: lavenderblush">NAME:</h2>
+        <h3 style="color: lavenderblush"><th:order th:text="${hero.name}" ></th:order></h3>
+        <h2 style="color: lavenderblush">STATS</h2>
+        <h3 style="color: lavenderblush"><th:order th:text="${hero.powerstats}" ></th:order></h3>
     </tr>
 </table>
 </body>

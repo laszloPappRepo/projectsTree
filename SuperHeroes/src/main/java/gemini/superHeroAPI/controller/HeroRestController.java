@@ -1,19 +1,32 @@
 package gemini.superHeroAPI.controller;
 
+import gemini.superHeroAPI.Service.SuperHeroApiService;
 import gemini.superHeroAPI.model.HeroResponse;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class HeroRestController {
 
-    private String accessToken = "1798381083516711";
+    @Autowired
+    private SuperHeroApiService superHeroApiService;
 
-    @RequestMapping(value = "http://superheroapi.com/api/{accessToken}/{id}", method = RequestMethod.GET)
-    public Model getHeroByID(Model model, @PathVariable Long id){
-        return model.addAttribute("list", new HeroResponse());
+    @GetMapping("/{id}")
+    public ModelAndView getByID(@RequestParam("id") Long id) throws Exception {
+        ModelAndView mav = new ModelAndView("/index");
+        HeroResponse heroResponseByID;
+        heroResponseByID = superHeroApiService.getHeroResponseFromSuperHeroAPIByID(id);
+        mav.addObject("list", heroResponseByID);
+        return mav;
+    }
+
+    @GetMapping("search/{name}")
+    public Object getByName(@RequestParam("name") String name) throws Exception{
+        HeroResponse heroResponseByName;
+        heroResponseByName = superHeroApiService.getHeroResponseFromSuperHeroAPIByName(name);
+        return heroResponseByName;
     }
 }

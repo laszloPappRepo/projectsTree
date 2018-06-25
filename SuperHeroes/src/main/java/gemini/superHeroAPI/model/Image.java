@@ -5,37 +5,24 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "occupation",
-        "base"
+        "url"
 })
 
-public class Work {
+public class Image {
 
-    @JsonProperty("occupation")
-    private String occupation;
-    @JsonProperty("base")
-    private String base;
+    @JsonProperty("url")
+    private String url;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("occupation")
-    public String getOccupation() {
-        return occupation;
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
     }
 
-    @JsonProperty("occupation")
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-    @JsonProperty("base")
-    public String getBase() {
-        return base;
-    }
-
-    @JsonProperty("base")
-    public void setBase(String base) {
-        this.base = base;
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @JsonAnyGetter
@@ -47,5 +34,4 @@ public class Work {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
-
 }

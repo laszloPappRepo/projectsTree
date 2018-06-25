@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+   <description></description>
+   <name>superHeroApiUITest</name>
+   <tag></tag>
+   <UUID>25d94630-435d-4b0e-ba93-ffac097da883</UUID>
+   <migratedVersion>5.4.0</migratedVersion>
+   <pageLoadTimeout>0</pageLoadTimeout>
+</Project>

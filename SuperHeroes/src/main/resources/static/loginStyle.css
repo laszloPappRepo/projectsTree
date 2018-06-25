@@ -3,7 +3,7 @@ body {
     height: auto;
     background-image:
     url("http://www.luisasempere.com/wp-content/uploads/2017/02/decorative-ideas-super-hero-wallpaper-handmade-normally-achieve-design-interior-patterns-.jpg");
-    background-repeat: no-repeat, repeat;
+    background-repeat: no-repeat;
 }
 
 hi {
@@ -34,6 +34,16 @@ input[type=text] {
     font-size: 20px;
 }
 
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #334d4d;
+    font-size: 20px;
+}
+
 button {
     background-color: #334d4d; /* Black */
     border: none;
@@ -46,13 +56,14 @@ button {
     border-radius: 8px;
 }
 
-a.nul{
-    font-size: 14px;
-    margin 10%;
-    padding: 15px 32px;
+a:link{
+    font-size: 28px;
+    margin 20%;
+    color: white;
+    width: 200px;
 }
 
 div.link{
-    width: 200px;
-    margin 10%;
+    width: 600px;
+    margin 100%;
 }

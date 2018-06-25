@@ -1,71 +1,101 @@
 package gemini.superHeroAPI.model;
+import com.fasterxml.jackson.annotation.*;
+import java.util.HashMap;
+import java.util.Map;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "intelligence",
+        "strength",
+        "speed",
+        "durability",
+        "power",
+        "combat"
+})
 public class PowerStats {
 
-    private int intelligence;
-    private int strength;
-    private int speed;
-    private int durability;
-    private int power;
-    private int combat;
+    @JsonProperty("intelligence")
+    private String intelligence;
+    @JsonProperty("strength")
+    private String strength;
+    @JsonProperty("speed")
+    private String speed;
+    @JsonProperty("durability")
+    private String durability;
+    @JsonProperty("power")
+    private String power;
+    @JsonProperty("combat")
+    private String combat;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public PowerStats() {
-    }
-
-    public PowerStats(int intelligence, int strength, int speed, int durability, int power, int combat) {
-        this.intelligence = intelligence;
-        this.strength = strength;
-        this.speed = speed;
-        this.durability = durability;
-        this.power = power;
-        this.combat = combat;
-    }
-
-    public int getIntelligence() {
+    @JsonProperty("intelligence")
+    public String getIntelligence() {
         return intelligence;
     }
 
-    public void setIntelligence(int intelligence) {
+    @JsonProperty("intelligence")
+    public void setIntelligence(String intelligence) {
         this.intelligence = intelligence;
     }
 
-    public int getStrength() {
+    @JsonProperty("strength")
+    public String getStrength() {
         return strength;
     }
 
-    public void setStrength(int strength) {
+    @JsonProperty("strength")
+    public void setStrength(String strength) {
         this.strength = strength;
     }
 
-    public int getSpeed() {
+    @JsonProperty("speed")
+    public String getSpeed() {
         return speed;
     }
 
-    public void setSpeed(int speed) {
+    @JsonProperty("speed")
+    public void setSpeed(String speed) {
         this.speed = speed;
     }
 
-    public int getDurability() {
+    @JsonProperty("durability")
+    public String getDurability() {
         return durability;
     }
 
-    public void setDurability(int durability) {
+    @JsonProperty("durability")
+    public void setDurability(String durability) {
         this.durability = durability;
     }
 
-    public int getPower() {
+    @JsonProperty("power")
+    public String getPower() {
         return power;
     }
 
-    public void setPower(int power) {
+    @JsonProperty("power")
+    public void setPower(String power) {
         this.power = power;
     }
 
-    public int getCombat() {
+    @JsonProperty("combat")
+    public String getCombat() {
         return combat;
     }
 
-    public void setCombat(int combat) {
+    @JsonProperty("combat")
+    public void setCombat(String combat) {
         this.combat = combat;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 }

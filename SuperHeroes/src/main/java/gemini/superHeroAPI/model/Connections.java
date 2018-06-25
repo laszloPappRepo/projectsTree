@@ -1,33 +1,50 @@
 package gemini.superHeroAPI.model;
+import com.fasterxml.jackson.annotation.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.List;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "group-affiliation",
+        "relatives"
+})
 
 public class Connections {
 
-     List<String> groupAffiliation;
-     List<String> relatives;
+    @JsonProperty("group-affiliation")
+    private String groupAffiliation;
+    @JsonProperty("relatives")
+    private String relatives;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public Connections() {
-    }
-
-    public Connections(List<String> groupAffiliation, List<String> relatives) {
-        this.groupAffiliation = groupAffiliation;
-        this.relatives = relatives;
-    }
-
-    public List<String> getGroupAffiliation() {
+    @JsonProperty("group-affiliation")
+    public String getGroupAffiliation() {
         return groupAffiliation;
     }
 
-    public void setGroupAffiliation(List<String> groupAffiliation) {
+    @JsonProperty("group-affiliation")
+    public void setGroupAffiliation(String groupAffiliation) {
         this.groupAffiliation = groupAffiliation;
     }
 
-    public List<String> getRelatives() {
+    @JsonProperty("relatives")
+    public String getRelatives() {
         return relatives;
     }
 
-    public void setRelatives(List<String> relatives) {
+    @JsonProperty("relatives")
+    public void setRelatives(String relatives) {
         this.relatives = relatives;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 }

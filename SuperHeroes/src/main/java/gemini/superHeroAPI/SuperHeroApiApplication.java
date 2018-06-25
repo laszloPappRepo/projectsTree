@@ -11,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-
 public class SuperHeroApiApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
@@ -25,9 +24,6 @@ public class SuperHeroApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		for (int i = 0; i < accountRepository.listAll().size(); i++) {
-			System.out.println(accountRepository.listAll().get(i).getPassword());
-		}
 	}
 
 	@Configuration
