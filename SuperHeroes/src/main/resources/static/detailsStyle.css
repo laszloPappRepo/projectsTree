@@ -1,0 +1,32 @@
+body {
+    width: auto;
+    height: auto;
+    background-image:
+    url("http://www.androidguys.com/wp-content/uploads/2015/06/Super-Hero-Wallpaper-Featured.jpg");
+    background-repeat: repeat;
+}
+
+#heroId {
+
+}
+
+#image {
+    width: 150;
+    height: 280;
+}
+
+#bio {
+    float: right;
+}
+
+#app {
+    float: right;
+}
+
+#league {
+    position: left;
+    width: 200px;
+    height: 120px;
+    color: white;
+    font-size: 24px;
+}

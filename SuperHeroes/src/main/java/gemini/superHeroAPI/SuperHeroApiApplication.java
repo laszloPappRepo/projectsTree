@@ -1,5 +1,6 @@
 package gemini.superHeroAPI;
 import gemini.superHeroAPI.Service.LoginValidationService;
+import gemini.superHeroAPI.Service.SuperHeroApiService;
 import gemini.superHeroAPI.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,17 +23,26 @@ public class SuperHeroApiApplication implements CommandLineRunner {
 	@Autowired
 	AccountRepository accountRepository;
 
+	@Autowired
+    SuperHeroApiService superHeroApiService;
+
 	@Override
 	public void run(String... args) throws Exception {
+        System.out.println(superHeroApiService.getHeroResponseFromSuperHeroAPIByID(70L).toString());
 	}
 
 	@Configuration
 	@EnableWebMvc
-	public class webConfig extends WebMvcConfigurerAdapter {
+	public class WebConfig extends WebMvcConfigurerAdapter {
 
 		@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {
-			registry.addResourceHandler("/static/**")
+			registry.addResourceHandler(
+					"/static/**",
+					"/webjars/**",
+					"/img/**",
+					"/css/**",
+					"/js/**")
 					.addResourceLocations("classpath:/static/");
 		}
 	}

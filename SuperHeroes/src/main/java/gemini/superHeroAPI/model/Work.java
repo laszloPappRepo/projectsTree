@@ -1,7 +1,10 @@
 package gemini.superHeroAPI.model;
-import com.fasterxml.jackson.annotation.*;
-import java.util.HashMap;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -9,23 +12,20 @@ import java.util.Map;
         "base"
 })
 
+@Entity
 public class Work {
+
+    @Id
+    private Long id;
 
     @JsonProperty("occupation")
     private String occupation;
     @JsonProperty("base")
     private String base;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("occupation")
     public String getOccupation() {
         return occupation;
-    }
-
-    @JsonProperty("occupation")
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
     }
 
     @JsonProperty("base")
@@ -33,19 +33,11 @@ public class Work {
         return base;
     }
 
-    @JsonProperty("base")
-    public void setBase(String base) {
-        this.base = base;
+    public Long getId() {
+        return id;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    public void setId(Long id) {
+        this.id = id;
     }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

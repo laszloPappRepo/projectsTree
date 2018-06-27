@@ -49,7 +49,11 @@ public class LoginController {
 
     @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public String addNewUser(@ModelAttribute Account account) {
-        accountRepository.save(account);
+        if (account.getPassword().equals(account.getConfirmPassword())) {
+            accountRepository.save(account);
+        }else{
+            return "newUser";
+        }
         return "redirect:/";
     }
 }

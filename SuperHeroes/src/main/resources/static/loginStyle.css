@@ -2,7 +2,7 @@ body {
     width: auto;
     height: auto;
     background-image:
-    url("http://www.luisasempere.com/wp-content/uploads/2017/02/decorative-ideas-super-hero-wallpaper-handmade-normally-achieve-design-interior-patterns-.jpg");
+    url("http://kb4images.com/images/superhero-wallpaper/36297163-superhero-wallpaper.jpg");
     background-repeat: no-repeat;
 }
 
@@ -66,4 +66,13 @@ a:link{
 div.link{
     width: 600px;
     margin 100%;
+}
+
+#newUser {
+    position: left;
+    right: 140px;
+    width: 200px;
+    height: 120px;
+    margin-left: 150px;
+    color: blue;
 }

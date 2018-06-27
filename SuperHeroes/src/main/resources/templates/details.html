@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/detailsStyle.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <title>Hero Details</title>
+</head>
+<body>
+<div class="link">
+    <nav><a id="league" href="/index">BACK TO THE MAIN PAGE</a></nav>
+</div>
+<table class="table table-hover table-dark" style="font-size: xx-large">
+    <tr th:each="hero : ${list}">
+        <a class="btn btn-default" th:href="@{/{id}/saveHero(id=${hero.id})}" role="button">SAVE HERO</a>
+        <h1 style="color: grey">NAME:<th:order th:text="${hero.name}" ></th:order></h1>
+        <img id="image" th:src="${hero.image.url}" width="300" height="350"/>
+    </tr>
+</table>
+<table id="bio" style="font-size: xx-large">
+    <tr th:each="hero : ${list}">
+        <h2 style="color: grey">FULL NAME:<th:order th:text="${hero.biography.fullName}" ></th:order></h2>
+        <h2 style="color: grey">ALIASES:<th:order th:text="${hero.biography.aliases}" ></th:order></h2>
+        <h2 style="color: grey">ALTER EGOS:<th:order th:text="${hero.biography.alteregos}" ></th:order></h2>
+        <h2 style="color: grey">BIRTH PLACE:<th:order th:if="${hero.biography.birth}"></th:order></h2>
+        <h2 style="color: grey">FIRST APPEARANCE:<th:order th:text="${hero.biography.appearance}" ></th:order></h2>
+        <h2 style="color: grey">PUBLISHER:<th:order th:text="${hero.biography.publisher}" ></th:order></h2>
+        <h2 style="color: grey">ALIGNMENT:<th:order th:text="${hero.biography.alignment}" ></th:order></h2>
+    </tr>
+</table>
+<table class="table table-hover table-dark" style="font-size: xx-large">
+    <tr id="app" th:each="hero : ${list}">
+        <h2 style="color: grey">GENDER:<th:order th:text="${hero.appearance.gender}" ></th:order></h2>
+        <h2 style="color: grey">RACE:<th:order th:text="${hero.appearance.race}" ></th:order></h2>
+        <h2 style="color: grey">HEIGHT:<th:order th:text="${hero.appearance.height}" ></th:order></h2>
+        <h2 style="color: grey">WEIGHT:<th:order th:if="${hero.appearance.weight}"></th:order></h2>
+        <h2 style="color: grey">EYE COLOR:<th:order th:text="${hero.appearance.eyeColor}" ></th:order></h2>
+        <h2 style="color: grey">HAIR COLOR:<th:order th:text="${hero.appearance.hairColor}" ></th:order></h2>
+    </tr>
+</table>
+<table class="table table-hover table-dark" style="font-size: xx-large">
+    <tr id="pow" th:each="hero : ${list}">
+        <h2 style="color: grey">INTELLIGENCE:<th:order th:text="${hero.powerstats.intelligence}" ></th:order></h2>
+        <h2 style="color: grey">STRENGTH:<th:order th:text="${hero.powerstats.strength}" ></th:order></h2>
+        <h2 style="color: grey">SPEED:<th:order th:text="${hero.powerstats.speed}" ></th:order></h2>
+        <h2 style="color: grey">DURABILITY:<th:order th:if="${hero.powerstats.durability}"></th:order></h2>
+        <h2 style="color: grey">POWER:<th:order th:text="${hero.powerstats.power}" ></th:order></h2>
+        <h2 style="color: grey">COMBAT:<th:order th:text="${hero.powerstats.combat}" ></th:order></h2>
+    </tr>
+</table>
+<table class="table table-hover table-dark" style="font-size: xx-large">
+    <tr id="work" th:each="hero : ${list}">
+        <h2 style="color: grey">OCCUPATION:<th:order th:text="${hero.work.occupation}" ></th:order></h2>
+        <h2 style="color: grey">BASE:<th:order th:text="${hero.work.base}" ></th:order></h2>
+    </tr>
+</table>
+<table class="table table-hover table-dark" style="font-size: xx-large">
+    <tr id="conn" th:each="hero : ${list}">
+        <h2 style="color: grey">GROUP:<th:order th:text="${hero.connections.groupAffiliation}" ></th:order></h2>
+        <h2 style="color: grey">RELATIVES:<th:order th:text="${hero.connections.relatives}" ></th:order></h2>
+    </tr>
+</table>
+</body>
+</html>

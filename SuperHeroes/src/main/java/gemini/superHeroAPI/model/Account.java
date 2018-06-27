@@ -12,11 +12,14 @@ public class Account {
     @JsonIgnore
     private String password;
 
+    private String confirmPassword;
+
     public Account() { } // JPA only
 
-    public Account(String username, String password) {
+    public Account(String username, String password, String confirmPassword) {
         this.username = username;
         this.password = password;
+        this.confirmPassword = confirmPassword;
     }
 
     public String getUsername() {
@@ -33,6 +36,14 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }
 

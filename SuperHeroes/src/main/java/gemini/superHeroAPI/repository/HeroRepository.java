@@ -1,5 +1,4 @@
 package gemini.superHeroAPI.repository;
-
 import gemini.superHeroAPI.model.HeroResponse;
 import org.springframework.data.repository.CrudRepository;
 

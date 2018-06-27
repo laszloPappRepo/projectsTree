@@ -1,13 +1,11 @@
 package gemini.superHeroAPI.model;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -21,136 +19,98 @@ import java.util.Map;
         "connections",
         "image"
 })
+
 @Entity
 public class HeroResponse implements Serializable {
 
-    @JsonProperty("response")
-    private String response;
-    @Id
-    @JsonProperty("id")
-    private String id;
-    @JsonProperty("name")
-    private String name;
-    @Transient
-    @JsonProperty("powerstats")
-    private PowerStats powerstats;
-    @Transient
-    @JsonProperty("biography")
-    private Biography biography;
-    @Transient
-    @JsonProperty("appearance")
-    private Appearance appearance;
-    @Transient
-    @JsonProperty("work")
-    private Work work;
-    @Transient
-    @JsonProperty("connections")
-    private Connections connections;
-    @Transient
-    @JsonProperty("image")
-    private Image image;
-    @Transient
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<>();
+        @JsonProperty("response")
+        private String response;
+        @Id
+        @JsonProperty("id")
+        private Long id;
+        @JsonProperty("name")
+        private String name;
 
-    @JsonProperty("response")
-    public String getResponse() {
-        return response;
-    }
+        @ManyToOne
+        @JsonProperty("powerstats")
+        private Powerstats powerstats;
+        @ManyToOne
+        @JsonProperty("biography")
+        private Biography biography;
+        @ManyToOne
+        @JsonProperty("appearance")
+        private Appearance appearance;
+        @ManyToOne
+        @JsonProperty("work")
+        private Work work;
+        @ManyToOne
+        @JsonProperty("connections")
+        private Connections connections;
+        @ManyToOne
+        @JsonProperty("image")
+        private Image image;
 
-    @JsonProperty("response")
-    public void setResponse(String response) {
-        this.response = response;
-    }
+        @JsonProperty("response")
+        public String getResponse() {
+            return response;
+        }
 
-    @JsonProperty("id")
-    public String getId() {
-        return id;
-    }
+        @JsonProperty("id")
+        public Long getId() {
+            return id;
+        }
 
-    @JsonProperty("id")
-    public void setId(String id) {
-        this.id = id;
-    }
+        @JsonProperty("name")
+        public String getName() {
+            return name;
+        }
 
-    @JsonProperty("name")
-    public String getName() {
-        return name;
-    }
+        @JsonProperty("powerstats")
+        public Powerstats getPowerstats() {
+            return powerstats;
+        }
 
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
+        @JsonProperty("biography")
+        public Biography getBiography() {
+            return biography;
+        }
 
-    @JsonProperty("powerstats")
-    public PowerStats getPowerstats() {
-        return powerstats;
-    }
+        @JsonProperty("appearance")
+        public Appearance getAppearance() {
+            return appearance;
+        }
 
-    @JsonProperty("powerstats")
-    public void setPowerstats(PowerStats powerstats) {
-        this.powerstats = powerstats;
-    }
+        @JsonProperty("work")
+        public Work getWork() {
+            return work;
+        }
 
-    @JsonProperty("biography")
-    public Biography getBiography() {
-        return biography;
-    }
+        @JsonProperty("connections")
+        public Connections getConnections() {
+            return connections;
+        }
 
-    @JsonProperty("biography")
-    public void setBiography(Biography biography) {
-        this.biography = biography;
-    }
+        @JsonProperty("image")
+        public Image getImage() {
+            return image;
+        }
 
-    @JsonProperty("appearance")
-    public Appearance getAppearance() {
-        return appearance;
-    }
+        public void setId(Long id) {
+                this.id = id;
+        }
 
-    @JsonProperty("appearance")
-    public void setAppearance(Appearance appearance) {
-        this.appearance = appearance;
-    }
-
-    @JsonProperty("work")
-    public Work getWork() {
-        return work;
-    }
-
-    @JsonProperty("work")
-    public void setWork(Work work) {
-        this.work = work;
-    }
-
-    @JsonProperty("connections")
-    public Connections getConnections() {
-        return connections;
-    }
-
-    @JsonProperty("connections")
-    public void setConnections(Connections connections) {
-        this.connections = connections;
-    }
-
-    @JsonProperty("image")
-    public Image getImage() {
-        return image;
-    }
-
-    @JsonProperty("image")
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
+        @Override
+        public String toString() {
+                return "HeroResponse{" +
+                        "response='" + response + '\'' +
+                        ", id=" + id +
+                        ", name='" + name + '\'' +
+                        ", powerstats=" + powerstats +
+                        ", biography=" + biography +
+                        ", appearance=" + appearance +
+                        ", work=" + work +
+                        ", connections=" + connections +
+                        ", image=" + image +
+                        '}';
+        }
 }

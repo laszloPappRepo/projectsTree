@@ -34,6 +34,16 @@ input[type=text] {
     font-size: 20px;
 }
 
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #334d4d;
+    font-size: 20px;
+}
+
 button {
     background-color: #334d4d; /* Black */
     border: none;
@@ -53,6 +63,16 @@ a.nul{
 }
 
 div.link{
+    width: 600px;
+    margin 100%;
+}
+
+#backLogin {
+    position: left;
+    right: 140px;
     width: 200px;
-    margin 10%;
+    height: 120px;
+    margin-left: 150px;
+    color: white;
+    font-size: 24px;
 }

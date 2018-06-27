@@ -1,7 +1,9 @@
 package gemini.superHeroAPI.model;
-import com.fasterxml.jackson.annotation.*;
-import java.util.HashMap;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -12,7 +14,12 @@ import java.util.Map;
         "power",
         "combat"
 })
-public class PowerStats {
+
+@Entity
+public class Powerstats {
+
+    @Id
+    private Long id;
 
     @JsonProperty("intelligence")
     private String intelligence;
@@ -26,17 +33,10 @@ public class PowerStats {
     private String power;
     @JsonProperty("combat")
     private String combat;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("intelligence")
     public String getIntelligence() {
         return intelligence;
-    }
-
-    @JsonProperty("intelligence")
-    public void setIntelligence(String intelligence) {
-        this.intelligence = intelligence;
     }
 
     @JsonProperty("strength")
@@ -44,19 +44,9 @@ public class PowerStats {
         return strength;
     }
 
-    @JsonProperty("strength")
-    public void setStrength(String strength) {
-        this.strength = strength;
-    }
-
     @JsonProperty("speed")
     public String getSpeed() {
         return speed;
-    }
-
-    @JsonProperty("speed")
-    public void setSpeed(String speed) {
-        this.speed = speed;
     }
 
     @JsonProperty("durability")
@@ -64,19 +54,9 @@ public class PowerStats {
         return durability;
     }
 
-    @JsonProperty("durability")
-    public void setDurability(String durability) {
-        this.durability = durability;
-    }
-
     @JsonProperty("power")
     public String getPower() {
         return power;
-    }
-
-    @JsonProperty("power")
-    public void setPower(String power) {
-        this.power = power;
     }
 
     @JsonProperty("combat")
@@ -84,18 +64,11 @@ public class PowerStats {
         return combat;
     }
 
-    @JsonProperty("combat")
-    public void setCombat(String combat) {
-        this.combat = combat;
+    public Long getId() {
+        return id;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setId(Long id) {
+        this.id = id;
     }
 }

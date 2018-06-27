@@ -1,37 +1,36 @@
 package gemini.superHeroAPI.model;
-import com.fasterxml.jackson.annotation.*;
-import java.util.HashMap;
-import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "url"
 })
 
+@Entity
 public class Image {
+
+    @Id
+    private Long id;
 
     @JsonProperty("url")
     private String url;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("url")
     public String getUrl() {
-        return url;
+            return url;
+        }
+
+    public Long getId() {
+        return id;
     }
 
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -1,8 +1,13 @@
 package gemini.superHeroAPI.model;
-import com.fasterxml.jackson.annotation.*;
-import java.util.HashMap;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.List;
-import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -14,43 +19,37 @@ import java.util.Map;
         "publisher",
         "alignment"
 })
+
+@Entity
 public class Biography {
 
+    @Id
+    private Long id;
+
     @JsonProperty("full-name")
-    private String fullName;
+    public String fullName;
     @JsonProperty("alter-egos")
-    private String alterEgos;
+    public String alteregos;
+    @ElementCollection
     @JsonProperty("aliases")
     private List<String> aliases = null;
     @JsonProperty("place-of-birth")
-    private String placeOfBirth;
+    public String birth;
     @JsonProperty("first-appearance")
-    private String firstAppearance;
+    public String appearance;
     @JsonProperty("publisher")
     private String publisher;
     @JsonProperty("alignment")
     private String alignment;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("full-name")
     public String getFullName() {
         return fullName;
     }
 
-    @JsonProperty("full-name")
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     @JsonProperty("alter-egos")
     public String getAlterEgos() {
-        return alterEgos;
-    }
-
-    @JsonProperty("alter-egos")
-    public void setAlterEgos(String alterEgos) {
-        this.alterEgos = alterEgos;
+        return alteregos;
     }
 
     @JsonProperty("aliases")
@@ -58,29 +57,14 @@ public class Biography {
         return aliases;
     }
 
-    @JsonProperty("aliases")
-    public void setAliases(List<String> aliases) {
-        this.aliases = aliases;
-    }
-
     @JsonProperty("place-of-birth")
     public String getPlaceOfBirth() {
-        return placeOfBirth;
-    }
-
-    @JsonProperty("place-of-birth")
-    public void setPlaceOfBirth(String placeOfBirth) {
-        this.placeOfBirth = placeOfBirth;
+        return birth;
     }
 
     @JsonProperty("first-appearance")
     public String getFirstAppearance() {
-        return firstAppearance;
-    }
-
-    @JsonProperty("first-appearance")
-    public void setFirstAppearance(String firstAppearance) {
-        this.firstAppearance = firstAppearance;
+        return appearance;
     }
 
     @JsonProperty("publisher")
@@ -88,29 +72,32 @@ public class Biography {
         return publisher;
     }
 
-    @JsonProperty("publisher")
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
     @JsonProperty("alignment")
     public String getAlignment() {
         return alignment;
     }
 
-    @JsonProperty("alignment")
-    public void setAlignment(String alignment) {
-        this.alignment = alignment;
+    public Long getId() {
+        return id;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    public String getFullname() {
+        return fullName;
     }
 
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public String getAlteregos() {
+        return alteregos;
     }
 
+    public String getBirth() {
+        return birth;
+    }
+
+    public String getAppearance() {
+        return appearance;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

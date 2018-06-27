@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/indexStyle.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <title>Save Hero</title>
+</head>
+<body>
+<form th:action="@{/{id}/saveHero (id=${id})}" th:object="${saveHero}" method="post">
+    <input class="col-xs-4 input-sm" type="text" placeholder="Hero" th:field="*{id}" />
+    <button class="btn btn-info btn-lg" type="submit" value="submit" >JOIN THE HERO TO YOUR LEAGUE</button>
+</form>
+</body>
+</html>
