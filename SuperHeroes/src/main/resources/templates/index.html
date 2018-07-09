@@ -13,12 +13,12 @@
 </div>
 <div>
     <h2 id="title">GET ADDITIONAL HEROES FROM SUPERHEROAPI.COM</h2>
-    <form th:action="@{/id}" th:object="${id}" method="get">
-        <input type="text" name="id" placeholder="Search by id"/>
+    <form id="byId" th:action="@{/id}" th:object="${id}" method="get">
+        <input id="id" type="text" name="id" placeholder="Search by id"/>
         <button class="btn btn-info btn-lg" type="submit" value="Submit">Search by id</button>
     </form>
-    <form th:action="@{search/name}" th:object="${name}" method="get">
-        <input type="text" name="name" placeholder="Search by name"/>
+    <form id="byName" th:action="@{search/name}" th:object="${name}" method="get">
+        <input id="name" type="text" name="name" placeholder="Search by name"/>
         <button class="btn btn-info btn-lg" type="submit" value="Submit">Search by name</button>
     </form>
 </div>

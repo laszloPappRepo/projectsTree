@@ -1,5 +1,4 @@
 package gemini.superHeroAPI.Service;
-
 import gemini.superHeroAPI.model.HeroResponse;
 import retrofit2.Call;
 import retrofit2.Retrofit;

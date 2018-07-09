@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.2.RELEASE'
+		springBootVersion = '2.0.3.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -15,7 +15,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'gemini'
+group = 'com.gemini'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -33,6 +33,7 @@ dependencies {
 	compile('com.squareup.retrofit2:retrofit:2.3.0')
 	compile('com.squareup.retrofit2:adapter-rxjava2:latest.version')
 	compile ('com.squareup.retrofit2:converter-gson:2.1.0')
+	compile (group: 'org.ajaxtags', name: 'ajaxtags', version: '1.1.5')
 	runtime('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')

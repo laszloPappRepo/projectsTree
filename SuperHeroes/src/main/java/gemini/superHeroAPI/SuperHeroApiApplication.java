@@ -24,7 +24,7 @@ public class SuperHeroApiApplication implements CommandLineRunner {
 	AccountRepository accountRepository;
 
 	@Autowired
-    SuperHeroApiService superHeroApiService;
+	private SuperHeroApiService superHeroApiService;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -42,7 +42,7 @@ public class SuperHeroApiApplication implements CommandLineRunner {
 					"/webjars/**",
 					"/img/**",
 					"/css/**",
-					"/js/**")
+                    "/static/js/**")
 					.addResourceLocations("classpath:/static/");
 		}
 	}

@@ -1,14 +1,12 @@
 package gemini.superHeroAPI.controller;
+import gemini.superHeroAPI.Service.HeroFilterService;
 import gemini.superHeroAPI.Service.SuperHeroApiService;
 import gemini.superHeroAPI.model.HeroResponse;
 import gemini.superHeroAPI.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -16,6 +14,9 @@ public class HeroController {
 
     @Autowired
     private SuperHeroApiService superHeroApiService;
+
+    @Autowired
+    private HeroFilterService heroFilterService;
 
     @Autowired
     private HeroRepository heroRepository;
@@ -42,7 +43,7 @@ public class HeroController {
     @RequestMapping(value = "/{id}/saveHero", method = RequestMethod.GET)
     public String saveHeroGet(@PathVariable long id, Model model) throws Exception {
         model.addAttribute("saveHero", superHeroApiService.getHeroResponseFromSuperHeroAPIByID(id));
-        return "/saveHero";
+        return "saveHero";
     }
 
     @RequestMapping(value = "/{id}/saveHero", method = RequestMethod.POST)
@@ -69,6 +70,19 @@ public class HeroController {
     public String leaguePage(Model model){
         model.addAttribute("list", heroRepository.findAll());
         return "league";
+    }
+
+    @RequestMapping(value = "/{name}/leagueMemberDetails", method = RequestMethod.GET)
+    public String getDetailedDescriptionOfYourLeagueMember(Model model, @PathVariable("name") String name){
+        model.addAttribute("list", heroFilterService.findLeagueMemberByName(name));
+        return "leagueMemberDetails";
+    }
+
+
+
+    @GetMapping(value="/a")
+    public String homepage(){
+        return "springAjax";
     }
 }
 

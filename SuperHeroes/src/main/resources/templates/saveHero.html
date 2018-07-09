@@ -9,7 +9,6 @@
 </head>
 <body>
 <form th:action="@{/{id}/saveHero (id=${id})}" th:object="${saveHero}" method="post">
-    <input class="col-xs-4 input-sm" type="text" placeholder="Hero" th:field="*{id}" />
     <button class="btn btn-info btn-lg" type="submit" value="submit" >JOIN THE HERO TO YOUR LEAGUE</button>
 </form>
 </body>

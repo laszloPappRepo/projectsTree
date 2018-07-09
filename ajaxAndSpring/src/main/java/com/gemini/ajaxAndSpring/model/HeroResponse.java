@@ -1,7 +1,9 @@
-package gemini.superHeroAPI.model;
+package com.gemini.ajaxAndSpring.model;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -48,14 +50,6 @@ public class HeroResponse implements Serializable {
         @JsonProperty("image")
         private Image image;
 
-        private String status;
-
-        /*public HeroResponse(String done) {
-                this.status = done;
-        }*/
-
-        public HeroResponse() {
-        }
 
         @JsonProperty("response")
         public String getResponse() {

@@ -2,25 +2,62 @@ body {
     width: auto;
     height: auto;
     background-image:
-    url("http://www.androidguys.com/wp-content/uploads/2015/06/Super-Hero-Wallpaper-Featured.jpg");
+    url("http://wallpaperlepi.com/wp-content/uploads/2015/01/Silhouette-Superhero-Wallpaper-Pc.jpg");
     background-repeat: repeat;
 }
 
-#heroId {
+#img {
+    float: right;
+}
 
+#name {
+    width: auto;
+    height: 150px;
+}
+
+
+#bio {
+    width: 500px;
+    height: 300px;
+    float: left;
+    color: white;
+    font-size: 24px;
+}
+
+#app {
+    width: 500px;
+    height: 300px;
+    float: right;
+    color: white;
+}
+
+#pow {
+    width: 450px;
+    height: 300px;
+    float: left;
+    color: white;
+}
+
+#work {
+    width: 450px;
+    height: 300px;
+    float: left;
+    color: white;
+}
+
+#conn {
+    width: 450px;
+    height: 300px;
+    float: right;
+    color: white;
 }
 
 #image {
     width: 150;
     height: 280;
-}
-
-#bio {
-    float: right;
-}
-
-#app {
-    float: right;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 5px;
 }
 
 #league {

@@ -11,55 +11,80 @@
 <div class="link">
     <nav><a id="league" href="/index">BACK TO THE MAIN PAGE</a></nav>
 </div>
+<div id="img">
+    <table style="font-size: xx-large">
+        <tr th:each="hero : ${list}">
+            <img id="image" th:src="${hero.image.url}" width="300" height="350"/>
+            <div>
+            <a class="btn btn-info btn-lg" th:href="@{/{id}/saveHero(id=${hero.id})}" role="button">SAVE HERO</a>
+            </div>
+        </tr>
+    </table>
+</div>
+<div id="name">
+<table style="font-size: xx-large">
+    <tr  th:each="hero : ${list}">
+        <h1 style="color: #BDB76B">NAME:<th:order th:text="${hero.name}" ></th:order></h1>
+    </tr>
+</table>
+</div>
+<div id="bio">
+    <h2>BIOGRAPHY</h2>
+    <table style="font-size: xx-large">
+    <tr th:each="hero : ${list}">
+        <h2 style="color: #BDB76B">FULL NAME:<th:order th:text="${hero.biography.fullName}" ></th:order></h2>
+        <h2 style="color: #BDB76B">ALIASES:<th:order th:text="${hero.biography.aliases}" ></th:order></h2>
+        <h2 style="color: #BDB76B">ALTER EGOS:<th:order th:text="${hero.biography.alteregos}" ></th:order></h2>
+        <h2 style="color: #BDB76B">BIRTH PLACE:<th:order th:if="${hero.biography.birth}"></th:order></h2>
+        <h2 style="color: #BDB76B">FIRST APPEARANCE:<th:order th:text="${hero.biography.appearance}" ></th:order></h2>
+        <h2 style="color: #BDB76B">PUBLISHER:<th:order th:text="${hero.biography.publisher}" ></th:order></h2>
+        <h2 style="color: #BDB76B">ALIGNMENT:<th:order th:text="${hero.biography.alignment}" ></th:order></h2>
+    </tr>
+</table>
+</div>
+<div id="app">
+    <h2>APPEARANCE</h2>
 <table class="table table-hover table-dark" style="font-size: xx-large">
     <tr th:each="hero : ${list}">
-        <a class="btn btn-default" th:href="@{/{id}/saveHero(id=${hero.id})}" role="button">SAVE HERO</a>
-        <h1 style="color: grey">NAME:<th:order th:text="${hero.name}" ></th:order></h1>
-        <img id="image" th:src="${hero.image.url}" width="300" height="350"/>
+        <h2 style="color: #BDB76B">GENDER:<th:order th:text="${hero.appearance.gender}" ></th:order></h2>
+        <h2 style="color: #BDB76B">RACE:<th:order th:text="${hero.appearance.race}" ></th:order></h2>
+        <h2 style="color: #BDB76B">HEIGHT:<th:order th:text="${hero.appearance.height}" ></th:order></h2>
+        <h2 style="color: #BDB76B">WEIGHT:<th:order th:if="${hero.appearance.weight}"></th:order></h2>
+        <h2 style="color: #BDB76B">EYE COLOR:<th:order th:text="${hero.appearance.eyeColor}" ></th:order></h2>
+        <h2 style="color: #BDB76B">HAIR COLOR:<th:order th:text="${hero.appearance.hairColor}" ></th:order></h2>
     </tr>
 </table>
-<table id="bio" style="font-size: xx-large">
+</div>
+<div id="pow">
+    <h2>POWER</h2>
+<table class="table table-hover table-dark" style="font-size: xx-large">
     <tr th:each="hero : ${list}">
-        <h2 style="color: grey">FULL NAME:<th:order th:text="${hero.biography.fullName}" ></th:order></h2>
-        <h2 style="color: grey">ALIASES:<th:order th:text="${hero.biography.aliases}" ></th:order></h2>
-        <h2 style="color: grey">ALTER EGOS:<th:order th:text="${hero.biography.alteregos}" ></th:order></h2>
-        <h2 style="color: grey">BIRTH PLACE:<th:order th:if="${hero.biography.birth}"></th:order></h2>
-        <h2 style="color: grey">FIRST APPEARANCE:<th:order th:text="${hero.biography.appearance}" ></th:order></h2>
-        <h2 style="color: grey">PUBLISHER:<th:order th:text="${hero.biography.publisher}" ></th:order></h2>
-        <h2 style="color: grey">ALIGNMENT:<th:order th:text="${hero.biography.alignment}" ></th:order></h2>
+        <h2 style="color: #BDB76B">INTELLIGENCE:<th:order th:text="${hero.powerstats.intelligence}" ></th:order></h2>
+        <h2 style="color: #BDB76B">STRENGTH:<th:order th:text="${hero.powerstats.strength}" ></th:order></h2>
+        <h2 style="color: #BDB76B">SPEED:<th:order th:text="${hero.powerstats.speed}" ></th:order></h2>
+        <h2 style="color: #BDB76B">DURABILITY:<th:order th:if="${hero.powerstats.durability}"></th:order></h2>
+        <h2 style="color: #BDB76B">POWER:<th:order th:text="${hero.powerstats.power}" ></th:order></h2>
+        <h2 style="color: #BDB76B">COMBAT:<th:order th:text="${hero.powerstats.combat}" ></th:order></h2>
     </tr>
 </table>
+</div>
+<div id="work">
+    <h2>WORK</h2>
 <table class="table table-hover table-dark" style="font-size: xx-large">
-    <tr id="app" th:each="hero : ${list}">
-        <h2 style="color: grey">GENDER:<th:order th:text="${hero.appearance.gender}" ></th:order></h2>
-        <h2 style="color: grey">RACE:<th:order th:text="${hero.appearance.race}" ></th:order></h2>
-        <h2 style="color: grey">HEIGHT:<th:order th:text="${hero.appearance.height}" ></th:order></h2>
-        <h2 style="color: grey">WEIGHT:<th:order th:if="${hero.appearance.weight}"></th:order></h2>
-        <h2 style="color: grey">EYE COLOR:<th:order th:text="${hero.appearance.eyeColor}" ></th:order></h2>
-        <h2 style="color: grey">HAIR COLOR:<th:order th:text="${hero.appearance.hairColor}" ></th:order></h2>
+    <tr th:each="hero : ${list}">
+        <h2 style="color: #BDB76B">OCCUPATION:<th:order th:text="${hero.work.occupation}" ></th:order></h2>
+        <h2 style="color: #BDB76B">BASE:<th:order th:text="${hero.work.base}" ></th:order></h2>
     </tr>
 </table>
+</div>
+<div id="conn">
+    <h2>CONNECTION</h2>
 <table class="table table-hover table-dark" style="font-size: xx-large">
-    <tr id="pow" th:each="hero : ${list}">
-        <h2 style="color: grey">INTELLIGENCE:<th:order th:text="${hero.powerstats.intelligence}" ></th:order></h2>
-        <h2 style="color: grey">STRENGTH:<th:order th:text="${hero.powerstats.strength}" ></th:order></h2>
-        <h2 style="color: grey">SPEED:<th:order th:text="${hero.powerstats.speed}" ></th:order></h2>
-        <h2 style="color: grey">DURABILITY:<th:order th:if="${hero.powerstats.durability}"></th:order></h2>
-        <h2 style="color: grey">POWER:<th:order th:text="${hero.powerstats.power}" ></th:order></h2>
-        <h2 style="color: grey">COMBAT:<th:order th:text="${hero.powerstats.combat}" ></th:order></h2>
+    <tr th:each="hero : ${list}">
+        <h2 style="color: #BDB76B">GROUP:<th:order th:text="${hero.connections.groupAffiliation}" ></th:order></h2>
+        <h2 style="color: #BDB76B">RELATIVES:<th:order th:text="${hero.connections.relatives}" ></th:order></h2>
     </tr>
 </table>
-<table class="table table-hover table-dark" style="font-size: xx-large">
-    <tr id="work" th:each="hero : ${list}">
-        <h2 style="color: grey">OCCUPATION:<th:order th:text="${hero.work.occupation}" ></th:order></h2>
-        <h2 style="color: grey">BASE:<th:order th:text="${hero.work.base}" ></th:order></h2>
-    </tr>
-</table>
-<table class="table table-hover table-dark" style="font-size: xx-large">
-    <tr id="conn" th:each="hero : ${list}">
-        <h2 style="color: grey">GROUP:<th:order th:text="${hero.connections.groupAffiliation}" ></th:order></h2>
-        <h2 style="color: grey">RELATIVES:<th:order th:text="${hero.connections.relatives}" ></th:order></h2>
-    </tr>
-</table>
+</div>
 </body>
 </html>

@@ -2,28 +2,28 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../static/library.css"/>
+    <link rel="stylesheet" href="../static/leagueStyle.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
     <title>LEAGUE</title>
 </head>
 <body>
-<h1>YOUR LEAGUE</h1>
 <div class="link">
     <nav><a id="league" href="/index">BACK TO THE MAIN PAGE</a></nav>
 </div>
+<hi>YOUR LEAGUE</hi>
 <table class="table table-hover table-dark" style="font-size: small">
     <thead>
     <tr>
         <th scope="col" >IMAGE</th>
-        <th scope="col" >ID</th>
         <th scope="col" >NAME</th>
+        <th scope="col" >ID</th>
     </tr>
     </thead>
     <tr th:each="hero : ${list}">
         <td><img th:src="${hero.image.url}" width="60" height="70"/></td>
+        <td><a class="nav-link active" th:text="${hero.name}" th:href="@{/{name}/leagueMemberDetails(name=${hero.name})}"></a></td>
         <td><h2 style="color: grey"><th:order th:text="${hero.id}" ></th:order></h2></td>
-        <td><h2 style="color: grey"><th:order th:text="${hero.name}" ></th:order></h2></td>
     </tr>
 </table>
 </body>
