@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bat"
+    android:clipToPadding="true"
+    android:fillViewport="false"
+    tools:context="com.android.laci.superhero.DetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/bt_go_back"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_message"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="Go Back to the Main" />
+
+        <LinearLayout
+            android:id="@+id/hero_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/getHeroName"
+                android:layout_width="293dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:background="#62000000"
+                android:data=" @={hero.name}"
+                android:padding="10dp"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/getHeroImage"
+                android:layout_width="295dp"
+                android:layout_height="400dp"
+                android:orientation="vertical"></LinearLayout>
+
+        <TextView
+            android:layout_width="112dp"
+            android:layout_height="42dp"
+            android:text="BIOGRAPHY"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/heroBio"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="PUBLISHER"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeroBioPublisher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.biography.publisher}"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="ALIGNMENT"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeroBioAlignment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.biography.alignment}"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="POWER STATISTICS"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/heroStat"
+            android:layout_width="170dp"
+            android:layout_gravity="start"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="INTELLIGENCE"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeropowerstatsIntelligence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:data=" @={hero.powerstats.intelligence}"
+                android:fontFamily="serif"
+                android:gravity="end"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="STRENGTH"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeropowerstatsStrength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.powerstats.strength}"
+                android:gravity="end"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="SPEED"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeropowerstatsSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.powerstats.speed}"
+                android:gravity="end"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="DURABILITY"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeropowerstatsDurability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.powerstats.durability}"
+                android:gravity="end"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="POWER"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeropowerstatsPower"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.powerstats.power}"
+                android:gravity="end"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="COMBAT"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeropowerstatsCombat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.powerstats.combat}"
+                android:gravity="end"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="APPEARANCE"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/heroAppearance"
+            android:layout_width="170dp"
+            android:layout_gravity="start"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="GENDER"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeroAppearanceGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.appearance.gender}"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="RACE"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeroAppearanceRace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.appearance.race}"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="HEIGHT"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeroAppearanceHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.appearance.height}"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="WEIGHT"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeroAppearanceWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.appearance.weight}"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="WORK"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/heroWork"
+            android:layout_width="match_parent"
+            android:layout_gravity="start"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="OCCUPATION"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeroWorkOccupation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.work.occupation}"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="BASE"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeroWorkBase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.work.base}"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="CONNECTIONS"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/heroConnections"
+            android:layout_width="match_parent"
+            android:layout_gravity="start"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:text="RELATIVES"
+                android:textColor="@android:color/holo_blue_light" />
+
+            <TextView
+                android:id="@+id/getHeroConnectionsRelatives"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:data=" @={hero.connections.relatives}"
+                android:padding="10dp"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:padding="10dp"
+            android:text="GET A HERO!"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tvGetHeroResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:background="#62000000"
+            android:padding="10dp"
+            android:text="" />
+
+    </LinearLayout>
+</ScrollView>
