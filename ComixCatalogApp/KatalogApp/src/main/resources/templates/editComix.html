@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link href="../static/editComix.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <title>Edit your comix</title>
+</head>
+<body style="background-color: palegoldenrod">
+<div class="table-responsive">
+    <nav><a class="one" href="/collection">back to your collection</a></nav>
+</div>
+<h1 style="color: lavenderblush">Edit Comix</h1>
+<div id="form">
+    <form th:action="@{/{id}/edit (id=${id})}" th:object="${edit}" method="post">
+        <input class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="title" th:field="*{title}" />
+        <input class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="publisher" th:field="*{publisher}" />
+        <img th:src="${id}" width="240" height="330">
+        <input style="size: 22px" type="checkbox" name="done" th:checked="${done}" th:text="DONE" />
+        <button class="btn btn-info btn-lg" style="border-radius: 8px" type="submit" value="title" >SAVE</button>
+    </form>
+</div>
+</body>
+</html>

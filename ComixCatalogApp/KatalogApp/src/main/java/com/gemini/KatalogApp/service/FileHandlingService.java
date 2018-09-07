@@ -28,9 +28,9 @@ public class FileHandlingService {
     RarCompressor rarCompressor;
 
     //private static final int BUFFER_SIZE = 4096;
-    private static String UPLOADED_FOLDER = "C:\\projects\\ComixCatalogApp\\KatalogApp\\src\\tempComixRepo\\";
+   // private static String UPLOADED_FOLDER = "C:\\projects\\ComixCatalogApp\\KatalogApp\\src\\tempComixRepo\\";
     private static String toSaveCover = "C:\\projects\\ComixCatalogApp\\KatalogApp\\src\\tempComixRepo\\tempCoverRepo\\";
-    private static String folderToDelete = "C:\\projects\\ComixCatalogApp\\KatalogApp\\src\\tempComixRepo\\tempCoverRepo";
+   // private static String folderToDelete = "C:\\projects\\ComixCatalogApp\\KatalogApp\\src\\tempComixRepo\\tempCoverRepo";
     private static String fileFrom = "C:\\Comics\\";
 
     /**

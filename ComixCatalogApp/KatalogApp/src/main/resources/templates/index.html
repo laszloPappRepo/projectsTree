@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <title>Index</title>
 </head>
-<body>
-<div id="mySidenav" class="sidenav" style="display:none">
-    <button class="w3-bar-item w3-button w3-large"
-            onclick="closeNav()">Close &times;</button>
-    <a id="home" href="#" th:href="@{/}">home</a>
+<body id="body" onload="updateSize();">
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <a id="home" href="#" th:href="@{/index}">home</a>
     <a id="coll" href="#" th:href="@{/collection}">collection</a>
     <a id="dc" href="#" th:href="@{/DCNextWeek}">dc week</a>
     <a id="mar" href="#" th:href="@{/MarvelNextWeek}">marvel week</a>
@@ -20,32 +21,63 @@
     <!-- Use any element to open the sidenav -->
     <div id="myContainer" class="w3-teal">
         <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
-        <div class="w3-container">
 
-            <!-- file upload form -->
-            <form method="POST" action="/upload" enctype="multipart/form-data">
-                <input type="file" name="file" /><br/><br/>
-                <input type="submit" value="Submit" />
+
+        <div class="w3-container" align="center">
+            <!--multiple file upload form -->
+            <h2 id="multi">add comix to your collections</h2>
+            <form onload="loadCircle()" name="uploadingForm" enctype="multipart/form-data" action="/multi" method="POST">
+                <p id="multiP">
+                <input id="fileInput" type="file" name="uploadingFiles" onchange="updateSize();" multiple>
+                    <div id="fileNum"> selected files: <span>0</span> </div>
+                <div id="fileSize"> total size: <span>0</span> </div>
+                </p>
+                <p>
+                    <input type="submit" onclick="return confirm('Go for it!')" value="Upload">
+                </p>
             </form>
+            <div id="loader"></div>
             <div th:if="${message}">
-                <h2 th:text="${message}"/>
+                <h2 id="message" th:text="${message}"/>
             </div>
-
         </div>
+    </div>
     </div>
     <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 </div>
 <script>
+
 function openNav() {
-  document.getElementById("main").style.marginLeft = "15%";
-  document.getElementById("mySidenav").style.width = "15%";
-  document.getElementById("mySidenav").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
+    document.getElementById("mySidenav").style.width = "250px";
 }
+
 function closeNav() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidenav").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+function updateSize() {
+                var nBytes = 0,
+                        oFiles = document.getElementById("fileInput").files,
+                        nFiles = oFiles.length;
+                for (var nFileId = 0; nFileId < nFiles; nFileId++) {
+                    nBytes += oFiles[nFileId].size;
+                }
+
+                var sOutput = nBytes + " bytes";
+                for (var aMultiples = ["KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+                    sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
+                }
+                document.getElementById("fileNum").innerHTML = nFiles;
+                document.getElementById("fileSize").innerHTML = sOutput;
+            }
+
+ function loadCircle() {
+    myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
 }
 </script>
 </body>

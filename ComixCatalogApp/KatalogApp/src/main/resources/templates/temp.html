@@ -2,31 +2,83 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="../static/tempStyle.css"/>
+    <link rel="stylesheet" href="../static/indexStyle.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <title>Title</title>
+    <title>Index</title>
 </head>
-<body>
+<body onload="updateSize();">
 <div id="mySidenav" class="sidenav" style="display:none">
     <button class="w3-bar-item w3-button w3-large"
             onclick="closeNav()">Close &times;</button>
-    <a th:href="#" th:href="@{/}">home</a>
-    <a th:href="#" th:href="@{/collection}">collections</a>
+    <a id="home" href="#" th:href="@{/}">home</a>
+    <a id="coll" href="#" th:href="@{/collection}">collection</a>
+    <a id="dc" href="#" th:href="@{/DCNextWeek}">dc week</a>
+    <a id="mar" href="#" th:href="@{/MarvelNextWeek}">marvel week</a>
 </div>
 
 <div id="main">
-<!-- Use any element to open the sidenav -->
-<div id="myContainer" class="w3-teal">
-    <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
-    <div class="w3-container">
-        <h1>My Page</h1>
+    <!-- Use any element to open the sidenav -->
+    <div id="myContainer" class="w3-teal">
+        <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
+
+        <div class="w3-container" align="center">
+
+            <!--single file upload form -->
+            <h2>Upload single file</h2>
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+                <input type="file" name="file" /><br/><br/>
+                <input type="submit" value="Submit" />
+            </form>
+            <div th:if="${message}">
+                <h2 th:text="${message}"/>
+            </div>
+
+            <!--multiple file upload form -->
+            <h2>Upload multiple files</h2>
+            <form name="uploadingForm" enctype="multipart/form-data" action="/" method="POST">
+                <p>
+                    <input id="fileInput" type="file" name="uploadingFiles" onchange="updateSize();" multiple>
+                    selected files: <span id="fileNum">0</span>;
+                    total size: <span id="fileSize">0</span>
+                </p>
+                <p>
+                    <input type="submit" value="Upload files">
+                </p>
+            </form>
+            <div>
+                <div>Uploaded files:</div>
+                <list files as file>
+                <div>
+                    ${file.getName()}
+                </div>
+            </list>
+        </div>
+
+
     </div>
-</div>
-<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-
-
+    </div>
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 </div>
 <script>
+function updateSize() {
+                var nBytes = 0,
+                        oFiles = document.getElementById("fileInput").files,
+                        nFiles = oFiles.length;
+                for (var nFileId = 0; nFileId < nFiles; nFileId++) {
+                    nBytes += oFiles[nFileId].size;
+                }
+
+                var sOutput = nBytes + " bytes";
+                // optional code for multiples approximation
+                for (var aMultiples = ["KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+                    sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
+                }
+                // end of optional code
+
+                document.getElementById("fileNum").innerHTML = nFiles;
+                document.getElementById("fileSize").innerHTML = sOutput;
+            }
+
 function openNav() {
   document.getElementById("main").style.marginLeft = "15%";
   document.getElementById("mySidenav").style.width = "15%";
