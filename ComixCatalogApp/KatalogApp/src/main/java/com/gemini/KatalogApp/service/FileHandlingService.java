@@ -56,7 +56,7 @@ public class FileHandlingService {
         Files.write(path, bytes);
 
         redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded '" + fileInput.getOriginalFilename() + "'");
+                "Uploading process successful");
         cover.setTitle(fileInput.getOriginalFilename());
         //calling the readBytesFromFile method
         cover.setCover(readBytesFromFile(fileInput));

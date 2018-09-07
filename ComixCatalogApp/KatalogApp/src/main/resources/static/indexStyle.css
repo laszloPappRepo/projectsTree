@@ -46,6 +46,10 @@
 }
 
 /* The side navigation menu */
+#openNav{
+    position: fixed;
+}
+
 .sidenav {
         height: 100%;
         width: 0;
@@ -71,14 +75,6 @@
 
 .sidenav a:hover {
     color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
 }
 
 #home{color:#ffa642;}

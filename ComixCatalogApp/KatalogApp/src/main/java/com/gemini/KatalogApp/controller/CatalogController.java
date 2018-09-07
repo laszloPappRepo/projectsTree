@@ -68,7 +68,9 @@ public class CatalogController {
             } else {
                 try {
                     for (MultipartFile uploadedFile : uploadingFiles) {
-                        comixCoverRepo.save(fileHandlingService.fileUpload(uploadedFile, redirectAttributes.addFlashAttribute(uploadingFiles)));
+                        comixCoverRepo.save(fileHandlingService.fileUpload
+                                (uploadedFile, redirectAttributes.addFlashAttribute
+                                        (uploadingFiles)));
                         fileHandlingService.deleteFolderContent(uploadedFile);
                     }
                 } catch (IOException e) {

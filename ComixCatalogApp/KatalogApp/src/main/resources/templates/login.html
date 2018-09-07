@@ -13,6 +13,9 @@
     <input type="text" name="username" placeholder="username"/>
     <input type="password" name="password" placeholder="password"/>
     <button type="submit" value="Submit">Submit</button>
+    <div id="userNot" th:if="${message}">
+        <h2 id="message" th:text="${message}"/>
+    </div>
 </form>
 <table>
     <thead>
@@ -20,9 +23,7 @@
         <th scope="col" ></th>
     </tr>
     </thead>
-    <tr th:each="err : ${error}">
-        <td th:text="${err.error}"></td>
-    </tr>
+
 </table>
 <div>
     <nav><a id="newUser" href="/newUser">Create new account</a></nav>

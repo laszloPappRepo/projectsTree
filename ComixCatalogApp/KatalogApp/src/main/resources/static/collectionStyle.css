@@ -26,6 +26,10 @@ h1 {
 }
 
 /* The side navigation menu */
+#openNav{
+    position: fixed;
+}
+
 .sidenav {
         height: 100%;
         width: 0;
@@ -38,6 +42,7 @@ h1 {
         transition: 0.5s;
         padding-top: 60px;
         opacity: 0.7;
+
 }
 
 .sidenav a {
@@ -47,6 +52,7 @@ h1 {
         color: #818181;
         display: block;
         transition: 0.3s;
+
 }
 
 .sidenav a:hover {
@@ -66,9 +72,6 @@ h1 {
 #dc{color:#ffa642;}
 #mar{color:#ffa642;}
 
-.main {
-    margin-left: 200px; /* Same as the width of the sidenav */
-}
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LoginController {
@@ -29,14 +30,16 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String validator(Model model,
+    public String validator(RedirectAttributes redirectAttributes,
                             @RequestParam("username") String username,
                             @RequestParam("password") String password){
         if (loginValidationService.accountValidator(username, password)){
             return "redirect:index";
         }else {
-            model.addAttribute("error", new NotFoundException("The username: " + username
-                    + " and/or the password: " + password + " does not exist."));
+            redirectAttributes.addFlashAttribute("message", "The username: "
+                    + "'" + username + "'" + " and/or the password: " + "'" + password + "'" + " does not exist.");
+            //model.addAttribute("message", new NotFoundException("The username: " + username
+              //      + " and/or the password: " + password + " does not exist."));
             return "redirect:/";
         }
     }
