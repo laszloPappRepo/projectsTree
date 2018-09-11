@@ -2,12 +2,15 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../static/loading-bar.css"/>
+    <script type="text/javascript" src="../static/loading-bar.js"></script>
+
     <link rel="stylesheet" href="../static/indexStyle.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <title>Index</title>
 </head>
-<body id="body" onload="updateSize();">
 
+<body id="body" onload="updateSize();">
 <div id="mySidenav" class="sidenav">
     <button id="closebtn" onclick="closeNav()">close &times;</button>
 
@@ -22,31 +25,34 @@
     <div id="myContainer" class="w3-teal">
         <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
 
-
         <div class="w3-container" align="center">
-            <!--multiple file upload form -->
-            <h2 id="multi">add comix to your collections</h2>
-            <form onload="loadCircle()" name="uploadingForm" enctype="multipart/form-data" action="/multi" method="POST">
-                <p id="multiP">
-                <input id="fileInput" type="file" name="uploadingFiles" onchange="updateSize();" multiple>
-                    <div id="fileNum"> selected files: <span>0</span> </div>
-                <div id="fileSize"> total size: <span>0</span> </div>
-                </p>
-                <p>
-                    <input type="submit" onclick="return confirm('Go for it!')" value="Upload">
-                </p>
-            </form>
-           <!-- <div id="loader"></div> -->
+                <!--multiple file upload form -->
+                <h2 id="multi">add comix to your collections</h2>
+
+                <form name="uploadingForm" enctype="multipart/form-data" action="/multi" method="POST">
+                    <p id="multiP">
+                        <input id="files" type="file" name="uploadingFiles" onchange="updateSize();" multiple>
+                    <div id="fileNum"><span></span> </div>
+                    <div id="fileSize"> total size: <span>0</span></div>
+                    </p>
+                    <div id="fileWindow">
+                    <output id="selectedFiles"></output>
+                    </div>
+                    <p><input id="uploadButton" class="btn btn-default" type="submit" value="Upload"></p>
+
+                    <div id='progressBar'><div id='bar'></div></div>
+                </form>
+
             <div th:if="${message}">
                 <h2 id="message" th:text="${message}"/>
             </div>
         </div>
     </div>
-    </div>
-    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 </div>
-<script>
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+</div>
 
+<script>
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }
@@ -55,30 +61,112 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
+//counting file size
 function updateSize() {
-                var nBytes = 0,
-                        oFiles = document.getElementById("fileInput").files,
-                        nFiles = oFiles.length;
-                for (var nFileId = 0; nFileId < nFiles; nFileId++) {
-                    nBytes += oFiles[nFileId].size;
-                }
+    var nBytes = 0,
+    oFiles = document.getElementById("files").files,
+    nFiles = oFiles.length;
+    for (var nFileId = 0; nFileId < nFiles; nFileId++) {
+        nBytes += oFiles[nFileId].size;
+    }
 
-                var sOutput = nBytes + " bytes";
-                for (var aMultiples = ["KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
-                    sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
-                }
-                document.getElementById("fileNum").innerHTML = nFiles;
-                document.getElementById("fileSize").innerHTML = sOutput;
-            }
+    var sOutput = nBytes + " bytes";
+    for (var aMultiples = ["KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+        sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
+    }
+    document.getElementById("fileNum").innerHTML = nFiles;
+    document.getElementById("fileSize").innerHTML = sOutput;
+    }
 
- function loadCircle() {
-    myVar = setTimeout(showPage, 3000);
-}
+//progress bar
+var totalFileLength, totalUploaded, fileCount, filesUploaded;
 
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
-}
+    //To log everything on console
+    function debug(s) {
+    var debug = document.getElementById('debug');
+        if (debug) {
+            debug.innerHTML = debug.innerHTML + '<br/>' + s;
+        }
+    }
+
+    //Will be called when upload is completed
+    function onUploadComplete(e) {
+        totalUploaded += document.getElementById('files').files[filesUploaded].size;
+        filesUploaded++;
+        debug('complete ' + filesUploaded + " of " + fileCount);
+        debug('totalUploaded: ' + totalUploaded);
+        if (filesUploaded < fileCount) {
+            uploadNext();
+        } else {
+            var bar = document.getElementById('bar');
+            bar.style.width = '100%';
+            bar.innerHTML = '100% complete';
+            alert('Finished uploading file(s)');
+        }
+    }
+
+    function onFileSelect(e) {
+        var files = e.target.files; // FileList object
+        var output = [];
+        fileCount = files.length;
+        totalFileLength = 0;
+        for (var i = 0; i < fileCount; i++) {
+            var file = files[i];
+            output.push(file.name, ' (', file.size, ' bytes, ', file.lastModifiedDate.toLocaleDateString(), ')');
+            output.push('<br/>');
+            debug('add ' + file.size);
+            totalFileLength += file.size;
+        }
+        document.getElementById('selectedFiles').innerHTML = output.join('');
+        debug('totalFileLength:' + totalFileLength);
+    }
+
+    //This will continueously update the progress bar
+    function onUploadProgress(e) {
+        if (e.lengthComputable) {
+            var percentComplete = parseInt((e.loaded + totalUploaded) * 100 / totalFileLength);
+            var bar = document.getElementById('bar');
+            bar.style.width = percentComplete + '%';
+            bar.innerHTML = percentComplete + ' % complete';
+        } else {
+            debug('unable to compute');
+        }
+    }
+
+    //the Ouchhh !! moments will be captured here
+    function onUploadFailed(e) {
+        alert("Error uploading file");
+    }
+
+    //Pick the next file in queue and upload it to remote server
+    function uploadNext() {
+        var xhr = new XMLHttpRequest();
+        var fd = new FormData();
+        var file = document.getElementById('files').files[filesUploaded];
+        fd.append("multipartFile", file);
+        xhr.upload.addEventListener("progress", onUploadProgress, false);
+        xhr.addEventListener("load", onUploadComplete, false);
+        xhr.addEventListener("error", onUploadFailed, false);
+        xhr.open("POST", "save-product");
+        debug('uploading ' + file.name);
+        xhr.send(fd);
+    }
+
+    //Let's begin the upload process
+    function startUpload() {
+        totalUploaded = filesUploaded = 0;
+        uploadNext();
+    }
+
+    //Event listeners for button clicks
+    window.onload = function() {
+        document.getElementById('files').addEventListener('change', onFileSelect, false);
+        document.getElementById('uploadButton').addEventListener('click', startUpload, false);
+    }
+
+</script>
+</body>
+</html>
 </script>
 </body>
 </html>

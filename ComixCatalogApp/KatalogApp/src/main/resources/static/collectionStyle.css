@@ -2,11 +2,12 @@
     width: auto;
     height: auto;
     font-family: "Lato", sans-serif;
-    background-color: #000000;
+    background-image:
+    url("http://www.uidownload.com/files/677/958/532/10-hexagon-background-pack-screen-shot-2.jpg");
+    background-repeat: repeat;
 }
 
 #myContainer {
-    background-color: #000000;
 }
 
 #title{
@@ -18,7 +19,12 @@
 }
 
 #head{
-    color: #add4d9;
+    color: black;
+    float: right;
+}
+
+.table{
+    margin-top: 10%;
 }
 
 h1 {
