@@ -7,6 +7,7 @@
     <title>Collection</title>
 </head>
 <body id="body">
+<button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
 
 <div id="mySidenav" class="sidenav">
     <button id="closebtn" onclick="closeNav()">close &times;</button>
@@ -20,11 +21,15 @@
 <div id="main">
     <!-- Use any element to open the sidenav -->
     <div id="myContainer" class="w3-teal">
-        <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
 
         <div class="w3-container">
+            <div id="header">
+                <h2 id="head">collection</h2>
+            </div>
             <table class="table">
-                <thead><h1 id="head">COLLECTION</h1></thead>
+                <thead id="tHead">
+
+                </thead>
                 <tr th:each="comix : ${list}">
                     <td id="title" th:text="${comix.title}"></td>
                     <td id="pub" th:text="${comix.publisher}"></td>

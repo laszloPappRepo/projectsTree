@@ -2,25 +2,35 @@
     width: auto;
     height: auto;
     font-family: "Lato", sans-serif;
-    background-image:
-    url("http://www.uidownload.com/files/677/958/532/10-hexagon-background-pack-screen-shot-2.jpg");
-    background-repeat: repeat;
+    background-color: #21160b;
 }
 
 #myContainer {
 }
 
 #title{
-    color: #ccffff;
+    color: #ffffeb;
 }
 
 #pub{
-    color: #ffa642;
+    color: #ffffeb;
+}
+
+#header {
+    height: 100px;
+    background-color: #a6a6a6;
+    background-image:
+    url("../static/header.png");
+    border-radius: 8px;
 }
 
 #head{
-    color: black;
-    float: right;
+    text-align: right;
+    text-shadow: 2px 2px 8px #b35900;
+    padding-top: 40px;
+    padding-right: 60px;
+    letter-spacing: 5px;
+    color:white;
 }
 
 .table{
@@ -43,12 +53,11 @@ h1 {
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #111;
+        background-color: #382817;
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
-        opacity: 0.7;
-
+        opacity: 0.9;
 }
 
 .sidenav a {
@@ -73,10 +82,10 @@ h1 {
     margin-left: 50px;
 }
 
-#home{color:#ffa642;}
-#coll{color:#ffa642;}
-#dc{color:#ffa642;}
-#mar{color:#ffa642;}
+#home{color:#a6a5a3;}
+#coll{color:#a6a5a3;}
+#dc{color:#a6a5a3;}
+#mar{color:#a6a5a3;}
 
 
 @media screen and (max-height: 450px) {

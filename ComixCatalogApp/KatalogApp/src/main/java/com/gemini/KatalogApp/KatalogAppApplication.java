@@ -30,7 +30,8 @@ public class KatalogAppApplication implements CommandLineRunner {
 
 	public static void main(String[] args){
 		SpringApplication.run(KatalogAppApplication.class, args);
-		new File(CatalogController.uploadingdir).mkdirs();
+		new File(CatalogController.uploadingDir).mkdirs();
+		System.out.println("??????" + CatalogController.uploadingDir);
 	}
 
 	@Override

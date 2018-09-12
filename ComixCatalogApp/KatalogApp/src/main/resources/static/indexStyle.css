@@ -1,48 +1,71 @@
 #body {
     width: auto;
     height: auto;
+    background-color: #21160b;
+}
+
+#files {
+    border-radius: 8px;
+    background-color: #ffffeb;
+}
+
+#header {
+    height: 300px;
+    background-color: #a6a6a6;
     background-image:
-    url("https://www.wallpapersrc.com/img/d41dfe0a10344e999d8d54b5253ce3e6/black-pentagon-texture-and-a-little-blue-light-1920x1200.jpg");
-    background-repeat: repeat;
+    url("../static/header.png");
+    border-radius: 8px;
+}
+
+#multi{
+    text-align: right;
+    text-shadow: 2px 2px 8px #b35900;
+    padding-top: 40px;
+    padding-right: 60px;
+    letter-spacing: 5px;
+    color:white;
 }
 
 #myContainer {
 }
 
+#formBody{
+
+}
+
+#files{
+
+}
+
+#fileNum{
+    display: block;
+    color: #21160b;
+}
+
+#fileSize{
+    text-color: #ffffeb;
+    color: #ffffeb;
+}
+
 #multiP{
     border-radius: 8px;
+    color:#995c00;
 }
 
 #single{
     color:#ffa642;
 }
 
-#multi{
-    color:#ffa642;
-}
-
 #message{
-    color:#ffa642;
-}
-
-#multiP{
-    color:#ccffff;
+    color:#ffffeb;
 }
 
 #upList{
-    color:#ccffff;
+    color:#ffffeb;
 }
 
 #list{
-    color:#ccffff;
-}
-
-#fileNum{
-    display: block;
-}
-
-#fileSize{
-    color:#ffa642;
+    color:#ffffeb;
 }
 
 #fileWindow{
@@ -52,9 +75,11 @@
     box-sizing: border-box;
     border-radius: 8px;
     margin: 10px;
-    opacity: 0.5;
-    filter: alpha(opacity=60);
     text-decoration: light;
+}
+
+#uploadButton{
+    text-color: black;
 }
 
 /* The side navigation menu */
@@ -69,11 +94,11 @@
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #111;
+        background-color: #382817;
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
-        opacity: 0.7;
+        opacity: 0.9;
 }
 
 .sidenav a {
@@ -86,13 +111,13 @@
 }
 
 .sidenav a:hover {
-    color: #f1f1f1;
+    color: white;
 }
 
-#home{color:#ffa642;}
-#coll{color:#ffa642;}
-#dc{color:#ffa642;}
-#mar{color:#ffa642;}
+#home{color:#a6a5a3;}
+#coll{color:#a6a5a3;}
+#dc{color:#a6a5a3;}
+#mar{color:#a6a5a3;}
 
 .main {
     margin-left: 200px; /* Same as the width of the sidenav */
@@ -105,7 +130,7 @@
 
 /* Progress bar */
 #selectedFiles{
-  color: #ffa642;
+  color: #ffffeb;
 }
 
 #progressBar{
@@ -117,7 +142,7 @@
 
 #bar{
    height: 100%;
-   background: #ffa642;
+   background: #ffffeb;
    width: 0%;
    border-radius: 8px;
 }

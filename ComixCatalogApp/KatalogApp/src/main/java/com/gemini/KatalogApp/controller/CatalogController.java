@@ -4,7 +4,6 @@ import com.gemini.KatalogApp.model.ComixCover;
 import com.gemini.KatalogApp.repository.ComixCoverRepo;
 import com.gemini.KatalogApp.service.FileHandlingService;
 import com.gemini.KatalogApp.service.GlobalExceptionHandler;
-import com.github.junrar.exception.RarException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +16,7 @@ import java.io.IOException;
 @Controller
 public class CatalogController {
 
-    public static final String uploadingdir = System.getProperty("user.dir") + "/src/tempComixRepo/";
+    public static final String uploadingDir = "C:\\ewoKatalog\\temp\\";
 
     ComixCoverRepo comixCoverRepo;
     FileHandlingService fileHandlingService;
@@ -50,20 +49,18 @@ public class CatalogController {
     }
 
     @RequestMapping(value = "/collection", method = RequestMethod.GET)
-    public String collectionPage(Model model) throws Exception {
+    public String collectionPage(Model model) {
         model.addAttribute("list", comixCoverRepo.findAll());
         return "collection";
     }
 
     @RequestMapping(value = "/multi", method = RequestMethod.POST)
     public String uploadingPost(@RequestParam("uploadingFiles") MultipartFile[] uploadingFiles,
-                                RedirectAttributes redirectAttributes)
-            throws IOException, RarException, de.innosystec.unrar.exception.RarException {
+                                RedirectAttributes redirectAttributes) throws IOException {
 
         for (int i = 0; i < uploadingFiles.length; i++) {
             if (uploadingFiles[i].isEmpty()) {
-                redirectAttributes.addFlashAttribute
-                        ("message", "Please select files to upload");
+                redirectAttributes.addFlashAttribute("message", "Please select files to upload");
                 return "redirect:/index";
             } else {
                 try {

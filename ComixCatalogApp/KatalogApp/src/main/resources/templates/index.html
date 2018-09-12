@@ -11,6 +11,8 @@
 </head>
 
 <body id="body" onload="updateSize();">
+<button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
+
 <div id="mySidenav" class="sidenav">
     <button id="closebtn" onclick="closeNav()">close &times;</button>
 
@@ -23,29 +25,25 @@
 <div id="main">
     <!-- Use any element to open the sidenav -->
     <div id="myContainer" class="w3-teal">
-        <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
 
         <div class="w3-container" align="center">
                 <!--multiple file upload form -->
-                <h2 id="multi">add comix to your collections</h2>
+            <div id="header">
+                <h2 id="multi">add comix to your collection</h2>
+            </div>
 
-                <form name="uploadingForm" enctype="multipart/form-data" action="/multi" method="POST">
+                <form id="formBody" name="uploadingForm" enctype="multipart/form-data" action="/multi" method="POST">
                     <p id="multiP">
                         <input id="files" type="file" name="uploadingFiles" onchange="updateSize();" multiple>
                     <div id="fileNum"><span></span> </div>
                     <div id="fileSize"> total size: <span>0</span></div>
                     </p>
-                    <div id="fileWindow">
-                    <output id="selectedFiles"></output>
-                    </div>
+                    <div id="fileWindow"><output id="selectedFiles"></output></div>
                     <p><input id="uploadButton" class="btn btn-default" type="submit" value="Upload"></p>
-
                     <div id='progressBar'><div id='bar'></div></div>
                 </form>
 
-            <div th:if="${message}">
-                <h2 id="message" th:text="${message}"/>
-            </div>
+            <div th:if="${message}"><h2 id="message" th:text="${message}"/></div>
         </div>
     </div>
 </div>
@@ -71,7 +69,7 @@ function updateSize() {
     }
 
     var sOutput = nBytes + " bytes";
-    for (var aMultiples = ["KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+    for (var aMultiples = ["KiB", "MB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"], nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
         sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
     }
     document.getElementById("fileNum").innerHTML = nFiles;

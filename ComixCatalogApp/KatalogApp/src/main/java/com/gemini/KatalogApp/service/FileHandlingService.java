@@ -1,8 +1,8 @@
 package com.gemini.KatalogApp.service;
 
+import com.gemini.KatalogApp.controller.CatalogController;
 import com.gemini.KatalogApp.model.ComixCover;
 import com.gemini.KatalogApp.repository.ComixCoverRepo;
-import de.innosystec.unrar.exception.RarException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,22 +27,18 @@ public class FileHandlingService {
     @Autowired
     RarCompressor rarCompressor;
 
-    //private static final int BUFFER_SIZE = 4096;
-   // private static String UPLOADED_FOLDER = "C:\\projects\\ComixCatalogApp\\KatalogApp\\src\\tempComixRepo\\";
-    private static String toSaveCover = "C:\\projects\\ComixCatalogApp\\KatalogApp\\src\\tempComixRepo\\tempCoverRepo\\";
-   // private static String folderToDelete = "C:\\projects\\ComixCatalogApp\\KatalogApp\\src\\tempComixRepo\\tempCoverRepo";
+    private static String toSaveCover = CatalogController.uploadingDir;
     private static String fileFrom = "C:\\Comics\\";
 
     /**
      * Receive a compressed file and returns it's title and it's first .jpg file inside a ComixCover Entity
      *
-     * @param fileInput          is a compressed file
+     * @param fileInput is a compressed file
      * @param redirectAttributes
      * @return a ComixCover entity
      * @throws IOException
      */
-    public ComixCover fileUpload(MultipartFile fileInput, RedirectAttributes redirectAttributes)
-            throws IOException, RarException, com.github.junrar.exception.RarException {
+    public ComixCover fileUpload(MultipartFile fileInput, RedirectAttributes redirectAttributes) throws IOException {
 
         ComixCover cover = new ComixCover();
         byte[] bytes = new byte[0];
@@ -55,24 +51,22 @@ public class FileHandlingService {
         Path path = Paths.get(toSaveCover + fileInput.getOriginalFilename());
         Files.write(path, bytes);
 
-        redirectAttributes.addFlashAttribute("message",
-                "Uploading process successful");
+        redirectAttributes.addFlashAttribute("message", "Uploading process successful");
         cover.setTitle(fileInput.getOriginalFilename());
         //calling the readBytesFromFile method
         cover.setCover(readBytesFromFile(fileInput));
         return cover;
     }
 
-    public byte[] readBytesFromFile(MultipartFile fileInput) throws RarException, com.github.junrar.exception.RarException {
-        Path pathFrom = Paths.get(fileFrom + fileInput.getOriginalFilename());
-
-        File file = null;
+    public byte[] readBytesFromFile(MultipartFile fileInput) throws IOException {
 
         FileInputStream fileInputStream = null;
+        Path pathFrom = Paths.get(fileFrom + fileInput.getOriginalFilename());
+        File file = null;
         byte[] bytesArray = null;
         try {
             if (fileInput.getOriginalFilename().contains(".cbz")) {
-                file = zipCompressor.unzip(fileFrom + fileInput.getOriginalFilename(), toSaveCover);
+                file = zipCompressor.unzip(pathFrom.toString(), toSaveCover);
             }else if (fileInput.getOriginalFilename().contains(".cbr")){
                 file = rarCompressor.extractFiles(pathFrom, Paths.get(toSaveCover), toSaveCover);
             }
@@ -128,7 +122,7 @@ public class FileHandlingService {
         return cover;
     }
 
-    public void deleteFolderContent(MultipartFile fileInput) throws IOException {
+    public void deleteFolderContent(MultipartFile fileInput) {
         String getFolderName = fileInput.getOriginalFilename();
         int indexOfLast = getFolderName.lastIndexOf(".");
         String newString = getFolderName;
@@ -158,6 +152,12 @@ public class FileHandlingService {
             }
         }
         return dir.delete();
+    }
+
+    public File multipartToFile(MultipartFile multipart) throws IllegalStateException, IOException {
+        File fileToConvert = new File( multipart.getOriginalFilename());
+        multipart.transferTo(fileToConvert);
+        return fileToConvert;
     }
 }
 
