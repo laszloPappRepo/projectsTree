@@ -10,7 +10,7 @@
 }
 
 #header {
-    height: 300px;
+    height: 100px;
     background-color: #a6a6a6;
     background-image:
     url("../static/header.png");
@@ -145,6 +145,18 @@
    background: #ffffeb;
    width: 0%;
    border-radius: 8px;
+}
+
+#footer {
+
+}
+
+#copyright {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
 }
 
 

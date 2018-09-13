@@ -54,7 +54,7 @@ public class FileHandlingService {
         redirectAttributes.addFlashAttribute("message", "Uploading process successful");
         cover.setTitle(fileInput.getOriginalFilename());
         //calling the readBytesFromFile method
-        cover.setCover(readBytesFromFile(fileInput));
+        cover.setComicCover(readBytesFromFile(fileInput));
         return cover;
     }
 
@@ -152,12 +152,6 @@ public class FileHandlingService {
             }
         }
         return dir.delete();
-    }
-
-    public File multipartToFile(MultipartFile multipart) throws IllegalStateException, IOException {
-        File fileToConvert = new File( multipart.getOriginalFilename());
-        multipart.transferTo(fileToConvert);
-        return fileToConvert;
     }
 }
 

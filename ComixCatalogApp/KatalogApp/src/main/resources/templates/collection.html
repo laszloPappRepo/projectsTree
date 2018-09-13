@@ -26,14 +26,39 @@
             <div id="header">
                 <h2 id="head">collection</h2>
             </div>
-            <table class="table">
-                <thead id="tHead">
+            <div id="headMenu">
+                <table id="menu">
+                    <td id="search">
+                    <form th:action="@{/search}" th:object="${search}" method="get">
+                        <input type="search" name="search" placeholder="get comix :)"/>
+                        <button class="btn btn-default" id="buttonSearch" type="submit" value="submit">search</button>
+                    </form>
+                    </td>
+                    <td id="asc">
+                    <form th:action="@{/asc}" th:object="${search}" method="get">
+                        <button class="btn btn-default" id="buttonAsc" type="submit" value="submit">order asc</button>
+                    </form>
+                    </td>
+                    <td id="desc">
+                    <form th:action="@{/desc}" th:object="${search}" method="get">
+                        <button class="btn btn-default" id="buttonDesc" type="submit" value="submit">order desc</button>
+                    </form>
+                    </td>
+                    <td id="ref">
+                    <form th:action="@{/collection}" th:object="${search}" method="get">
+                        <button class="btn btn-default" id="buttonRefresh" type="submit" value="submit">refresh</button>
+                    </form>
+                    </td>
+                </table>
 
+            <table class="table">
+                <thead>
+                <th scope="col" ><div th:if="${message}"><h2 id="message" th:text="${message}"/></div></th>
                 </thead>
                 <tr th:each="comix : ${list}">
                     <td id="title" th:text="${comix.title}"></td>
                     <td id="pub" th:text="${comix.publisher}"></td>
-                    <td><img th:src="${comix.id}" width="240" height="340"></td>
+                    <td><img class="zoom" th:src="@{/{id}/image(id=${comix.id})}" width="240" height="340"></td>
                     <td>
                         <th:order>
                         <a class="btn btn-danger" th:href="@{/{id}/delete(id=${comix.id})}"
@@ -43,13 +68,13 @@
                         <a class="btn btn-default" th:href="@{/{id}/edit(id=${comix.id})}" role="button">EDIT</a>
                         </th:order>
                     </td>
-                    <td th:if="${comix.getDone()}">*</td>
+                    <td th:if="${comix.getReaded()}">*</td>
                 </tr>
             </table>
 
         </div>
     </div>
-    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+</div>
 </div>
 <script>
 function openNav() {

@@ -54,9 +54,21 @@ public class CatalogController {
         return "collection";
     }
 
+    @RequestMapping(value = "/asc", method = RequestMethod.GET)
+    public String collectionAsc(Model model) {
+        model.addAttribute("list", comixCoverRepo.orderedByTitleAsc());
+        return "collection";
+    }
+
+    @RequestMapping(value = "/desc", method = RequestMethod.GET)
+    public String collectionDesc(Model model) {
+        model.addAttribute("list", comixCoverRepo.orderedByTitleDesc());
+        return "collection";
+    }
+
     @RequestMapping(value = "/multi", method = RequestMethod.POST)
     public String uploadingPost(@RequestParam("uploadingFiles") MultipartFile[] uploadingFiles,
-                                RedirectAttributes redirectAttributes) throws IOException {
+                                RedirectAttributes redirectAttributes) {
 
         for (int i = 0; i < uploadingFiles.length; i++) {
             if (uploadingFiles[i].isEmpty()) {
@@ -79,11 +91,23 @@ public class CatalogController {
         return "redirect:/index";
     }
 
-    @RequestMapping(value = "{id}")
+    @RequestMapping(value = "{id}/image")
     @ResponseBody
     public byte[] returnCoverFromDB(@PathVariable long id)  {
-        byte[] image = comixCoverRepo.findById(id).get().getCover();
+        byte[] image = comixCoverRepo.findById(id).get().getComicCover();
         return image;
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String getComixListByTitle(Model model,
+                                      String search,
+                                      RedirectAttributes redirectAttributes){
+        if (comixCoverRepo.findAllByTitleIsContaining("%" + search + "%").size() > 0) {
+            model.addAttribute("list", comixCoverRepo.findAllByTitleIsContaining("%" + search + "%"));
+        }else {
+            redirectAttributes.addFlashAttribute("message", "there is no such comix :(");
+        }
+        return "collection";
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
@@ -93,13 +117,13 @@ public class CatalogController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-    public String editComixById(@PathVariable long id, Model model) {
+    public String editComixByIdGet(@PathVariable long id, Model model) {
         model.addAttribute("edit", comixCoverRepo.findById(id));
         return "/editComix";
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public String editComixById(@ModelAttribute ComixCover comixCover) {
+    public String editComixByIdPost(@ModelAttribute ComixCover comixCover) {
         comixCoverRepo.save(comixCover);
         return "redirect:/collection";
     }

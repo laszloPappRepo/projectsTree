@@ -16,8 +16,13 @@
     color: #ffffeb;
 }
 
+#headSection{
+    width: auto;
+}
+
 #header {
     height: 100px;
+    width: 100%;
     background-color: #a6a6a6;
     background-image:
     url("../static/header.png");
@@ -31,6 +36,37 @@
     padding-right: 60px;
     letter-spacing: 5px;
     color:white;
+}
+
+#message{
+    color:#ffffeb;
+}
+
+#headMenu{
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#search{
+    float: left;
+}
+
+#asc{
+    float: right;
+}
+
+#desc{
+    float: right;
+}
+
+#ref{
+    float: right;
+}
+
+#refresh{
+    padding-top: 10%;
 }
 
 .table{
@@ -92,3 +128,29 @@ h1 {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+/*image zoom menu*/
+.zoom {
+    padding: ;
+    transition: transform .7s;
+    width: 240px;
+    height: 340px;
+    margin: 0 auto;
+}
+
+.zoom:hover {
+    -ms-transform: scale(2.0); /* IE 9 */
+    -webkit-transform: scale(2.0); /* Safari 3-8 */
+    transform: scale(2.0);
+}
+
+#footer {
+
+}
+
+#copyright {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+}
+

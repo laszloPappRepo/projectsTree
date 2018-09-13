@@ -23,12 +23,25 @@
 
 <div id="form">
     <form th:action="@{/{id}/edit (id=${id})}" th:object="${edit}" method="post">
+        <input type="hidden" th:field="*{id}"/>
         <input class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="title" th:field="*{title}" />
         <input class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="publisher" th:field="*{publisher}" />
-        <img th:src="${id}" width="240" height="330">
-        <input style="size: 22px" type="checkbox" name="done" th:checked="${done}" th:text="DONE" />
-        <button class="btn btn-info btn-lg" style="border-radius: 8px" type="submit" value="title" >SAVE</button>
+        <input type="hidden" th:field="*{comicCover}" />
+        <h3 id="check">have u done it already?</h3>
+        <input style="size: 16px" type="checkbox" name="readed" th:checked="${readed}" >
+        <div>
+        <button class="btn btn-default" style="border-radius: 8px" type="submit" >SAVE</button>
+        </div>
     </form>
+</div>
+<div id="cover">
+    <img th:src="@{image}" width="400" height="600">
+</div>
+<div id="footer">
+    <!-- Other elements here -->
+    <div id="copyright">
+        Copyright
+    </div>
 </div>
 <script>
 function openNav() {

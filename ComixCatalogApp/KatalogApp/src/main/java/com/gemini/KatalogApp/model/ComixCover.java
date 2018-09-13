@@ -8,20 +8,29 @@ public class ComixCover {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String title;
-    @Column(name="COVER", nullable=false, columnDefinition = "LONGBLOB")
-    private byte[] cover;
-    private String publisher = "unknown";
-    public Boolean done = false;
+    public String title;
+    @Column(name="COMICCOVER", nullable=false, columnDefinition = "LONGBLOB")
+    public byte[] comicCover;
+    public String publisher;
+    public Boolean readed;
 
-    public ComixCover(String title, byte[] cover, String publisher, Boolean done) {
+    public ComixCover(Long id, String title, byte[] comicCover, String publisher, Boolean readed) {
+        this.id = id;
         this.title = title;
-        this.cover = cover;
-        this.publisher = publisher;
-        this.done = done;
+        this.comicCover = comicCover;
+        this.publisher = "unknown";
+        this.readed = false;
     }
 
     public ComixCover() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -31,16 +40,12 @@ public class ComixCover {
         this.title = title;
     }
 
-    public byte[] getCover() {
-        return cover;
+    public byte[] getComicCover() {
+        return comicCover;
     }
 
-    public void setCover(byte[] cover) {
-        this.cover = cover;
-    }
-
-    public Long getId() {
-        return id;
+    public void setComicCover(byte[] comicCover) {
+        this.comicCover = comicCover;
     }
 
     public String getPublisher() {
@@ -51,11 +56,11 @@ public class ComixCover {
         this.publisher = publisher;
     }
 
-    public Boolean getDone() {
-        return done;
+    public Boolean getReaded() {
+        return readed;
     }
 
-    public void setDone(Boolean done) {
-        this.done = done;
+    public void setReaded(Boolean readed) {
+        this.readed = readed;
     }
 }
