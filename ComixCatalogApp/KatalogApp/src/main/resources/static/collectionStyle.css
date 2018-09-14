@@ -16,6 +16,10 @@
     color: #ffffeb;
 }
 
+#done{
+    color: #ffffeb;
+}
+
 #headSection{
     width: auto;
 }
@@ -38,12 +42,16 @@
     color:white;
 }
 
+#thead{
+    height: 30px;
+}
+
 #message{
     color:#ffffeb;
 }
 
 #headMenu{
-    height: 50px;
+    height: 100px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -55,14 +63,17 @@
 
 #asc{
     float: right;
+    padding-left: 50px;
 }
 
 #desc{
     float: right;
+    padding-left: 50px;
 }
 
 #ref{
     float: right;
+    padding-left: 50px;
 }
 
 #refresh{
@@ -71,6 +82,12 @@
 
 .table{
     margin-top: 10%;
+}
+
+#notes{
+    overflow: auto;
+    text-decoration: light;
+    color: #ffffeb;
 }
 
 h1 {
@@ -133,15 +150,15 @@ h1 {
 .zoom {
     padding: ;
     transition: transform .7s;
-    width: 240px;
-    height: 340px;
+    width: 120px;
+    height: 170px;
     margin: 0 auto;
 }
 
 .zoom:hover {
-    -ms-transform: scale(2.0); /* IE 9 */
-    -webkit-transform: scale(2.0); /* Safari 3-8 */
-    transform: scale(2.0);
+    -ms-transform: scale(3.0); /* IE 9 */
+    -webkit-transform: scale(3.0); /* Safari 3-8 */
+    transform: scale(3.0);
 }
 
 #footer {

@@ -1,5 +1,7 @@
 package com.gemini.KatalogApp.model;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,13 +15,17 @@ public class ComixCover {
     public byte[] comicCover;
     public String publisher;
     public Boolean readed;
+    @Column(name = "description")
+    @Type(type="text")
+    public String description;
 
-    public ComixCover(Long id, String title, byte[] comicCover, String publisher, Boolean readed) {
+    public ComixCover(Long id, String title, byte[] comicCover, String description) {
         this.id = id;
         this.title = title;
         this.comicCover = comicCover;
         this.publisher = "unknown";
         this.readed = false;
+        this.description = description;
     }
 
     public ComixCover() {}
@@ -62,5 +68,13 @@ public class ComixCover {
 
     public void setReaded(Boolean readed) {
         this.readed = readed;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

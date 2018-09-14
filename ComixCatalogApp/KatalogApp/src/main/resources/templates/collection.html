@@ -27,38 +27,35 @@
                 <h2 id="head">collection</h2>
             </div>
             <div id="headMenu">
-                <table id="menu">
-                    <td id="search">
+                    <ul id="search">
                     <form th:action="@{/search}" th:object="${search}" method="get">
                         <input type="search" name="search" placeholder="get comix :)"/>
                         <button class="btn btn-default" id="buttonSearch" type="submit" value="submit">search</button>
                     </form>
-                    </td>
-                    <td id="asc">
+                    </ul>
+                    <li id="asc">
                     <form th:action="@{/asc}" th:object="${search}" method="get">
                         <button class="btn btn-default" id="buttonAsc" type="submit" value="submit">order asc</button>
                     </form>
-                    </td>
-                    <td id="desc">
+                    </li>
+                    <li id="desc">
                     <form th:action="@{/desc}" th:object="${search}" method="get">
                         <button class="btn btn-default" id="buttonDesc" type="submit" value="submit">order desc</button>
                     </form>
-                    </td>
-                    <td id="ref">
+                    </li>
+                    <li id="ref">
                     <form th:action="@{/collection}" th:object="${search}" method="get">
                         <button class="btn btn-default" id="buttonRefresh" type="submit" value="submit">refresh</button>
                     </form>
-                    </td>
-                </table>
+                    </li>
 
             <table class="table">
-                <thead>
+                <thead id="thead">
                 <th scope="col" ><div th:if="${message}"><h2 id="message" th:text="${message}"/></div></th>
                 </thead>
                 <tr th:each="comix : ${list}">
                     <td id="title" th:text="${comix.title}"></td>
-                    <td id="pub" th:text="${comix.publisher}"></td>
-                    <td><img class="zoom" th:src="@{/{id}/image(id=${comix.id})}" width="240" height="340"></td>
+                    <td><img class="zoom" th:src="@{/{id}/image(id=${comix.id})}"></td>
                     <td>
                         <th:order>
                         <a class="btn btn-danger" th:href="@{/{id}/delete(id=${comix.id})}"
@@ -68,22 +65,15 @@
                         <a class="btn btn-default" th:href="@{/{id}/edit(id=${comix.id})}" role="button">EDIT</a>
                         </th:order>
                     </td>
-                    <td th:if="${comix.getReaded()}">*</td>
+                    <td id="notes" th:text="${comix.description}"></td>
+                    <td id="pub" th:text="${comix.publisher}"></td>
+                    <td id="done" th:if="${comix.getReaded()}">FINISHED</td>
                 </tr>
             </table>
-
         </div>
     </div>
 </div>
 </div>
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-</script>
+<script type="text/javascript" src="../static/collection.js"></script>
 </body>
 </html>

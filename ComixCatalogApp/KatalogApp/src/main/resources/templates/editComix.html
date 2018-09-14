@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8" />
     <link href="../static/editComix.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
     <title>Edit your comix</title>
 </head>
 <body id="body">
 <div id="mySidenav" class="sidenav">
-    <button id="closebtn" onclick="closeNav()">close &times;</button>
-
-    <a id="coll" href="#" th:href="@{/collection}">collection</a>
 </div>
 
 <div id="main">
     <!-- Use any element to open the sidenav -->
     <div id="myContainer" class="w3-teal">
-        <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
     </div>
 </div>
 
@@ -26,11 +23,11 @@
         <input type="hidden" th:field="*{id}"/>
         <input class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="title" th:field="*{title}" />
         <input class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="publisher" th:field="*{publisher}" />
-        <input type="hidden" th:field="*{comicCover}" />
-        <h3 id="check">have u done it already?</h3>
-        <input style="size: 16px" type="checkbox" name="readed" th:checked="${readed}" >
+        <input id="notes" class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="notes" th:field="*{description}" />
+        <h3 id="check">have u finished it already?</h3>
+        <input style="size: 24px" type="checkbox" name="readed" th:checked="${readed}" >
         <div>
-        <button class="btn btn-default" style="border-radius: 8px" type="submit" >SAVE</button>
+        <button id="save" class="btn btn-default" style="border-radius: 8px" type="submit" >SAVE</button>
         </div>
     </form>
 </div>
@@ -41,16 +38,9 @@
     <!-- Other elements here -->
     <div id="copyright">
         Copyright
+            <a id="back" th:href="@{/collection}" class="btn btn-default">collection</a>
     </div>
 </div>
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-</script>
+<script type="text/javascript" src="../static/edit.js"></script>
 </body>
 </html>

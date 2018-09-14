@@ -123,7 +123,8 @@ public class CatalogController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public String editComixByIdPost(@ModelAttribute ComixCover comixCover) {
+    public String editComixByIdPost(@ModelAttribute ComixCover comixCover, @PathVariable long id) {
+        comixCover.setComicCover(comixCoverRepo.findById(id).get().getComicCover());
         comixCoverRepo.save(comixCover);
         return "redirect:/collection";
     }
