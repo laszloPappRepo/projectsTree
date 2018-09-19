@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/loginStyle.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <title>Login Page</title>
+</head>
+<body>
+<hi>ewoKatalog</hi>
+<form th:action="@{/login}" th:object="${search}" method="get">
+    <input type="text" name="username" placeholder="username"/>
+    <input type="password" name="password" placeholder="password"/>
+    <button type="submit" value="Submit">Submit</button>
+    <div id="userNot" th:if="${message}">
+        <h2 id="message" th:text="${message}"/>
+    </div>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th scope="col" ></th>
+    </tr>
+    </thead>
+
+</table>
+<div>
+    <nav><a id="newUser" href="/newUser">Create new account</a></nav>
+</div>
+</body>
+</html>

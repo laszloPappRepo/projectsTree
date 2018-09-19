@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../static/loading-bar.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="../static/indexStyle.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Index</title>
+</head>
+
+<body id="body" onload="updateSize();">
+<div id="mySidenav" class="sidenav">
+    <a id="home" href="#" class="fa fa-home" th:href="@{/index}"> home</a>
+    <a id="coll" href="#" class="fa fa-file-text-o" th:href="@{/collection}"> collection</a>
+    <a id="dc" href="#" class="fa fa-contao" th:href="@{/DCNextWeek}"> dc week</a>
+    <a id="mar" href="#" class="fa fa-contao" th:href="@{/MarvelNextWeek}"> marvel week</a>
+</div>
+
+<div id="main">
+            <div id="header">
+            </div>
+    <div id="uploadContainer" class="w3-container" align="center">
+    <h2 id="multi">you can add comix to the collection</h2>
+            <form id="formBody" name="uploadingForm" enctype="multipart/form-data" action="/multi" method="POST">
+                <p id="multiP">
+                    <input id="files" type="file" name="uploadingFiles" onchange="updateSize();" multiple>
+                <div id="fileNum"><span></span> </div>
+                <div id="fileSize"> total size: <span>0</span></div>
+                </p>
+                <div id="fileWindow"><output id="selectedFiles"></output></div>
+                <p><input id="uploadButton" class="w3-button w3-brown" type="submit" value="Upload"></p>
+                <div id='progressBar'><div id='bar'></div></div>
+                <div th:if="${message}"><h4 id="message" th:text="${message}"/></div>
+                <div th:if="${success}"><h3 id="success" th:text="${success}"/></div>
+            </form>
+    </div>
+    <div id="distContainer">
+
+    </div>
+</div>
+<script type="text/javascript" src="../static/index.js"></script>
+</body>
+</html>
+</script>
+</body>
+</html>

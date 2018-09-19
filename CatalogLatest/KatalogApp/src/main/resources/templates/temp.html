@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../static/loading-bar.css"/>
+
+    <link rel="stylesheet" href="../static/indexStyle.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <title>Index</title>
+</head>
+
+<body id="body" onload="updateSize();">
+<button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="openNav()">&#9776;</button>
+
+<div id="mySidenav" class="sidenav">
+    <button id="closebtn" onclick="closeNav()">close &times;</button>
+
+    <a id="home" href="#" th:href="@{/index}">home</a>
+    <a id="coll" href="#" th:href="@{/collection}">collection</a>
+    <a id="dc" href="#" th:href="@{/DCNextWeek}">dc week</a>
+    <a id="mar" href="#" th:href="@{/MarvelNextWeek}">marvel week</a>
+</div>
+
+<div id="main">
+    <!-- Use any element to open the sidenav -->
+    <div id="myContainer" class="w3-teal">
+
+        <div class="w3-container" align="center">
+            <!--multiple file upload form -->
+            <div id="header">
+                <h2 id="multi">add comix to your collection</h2>
+            </div>
+
+            <form id="formBody" name="uploadingForm" enctype="multipart/form-data" action="/multi" method="POST">
+                <p id="multiP">
+                    <input id="files" type="file" name="uploadingFiles" onchange="updateSize();" multiple>
+                <div id="fileNum"><span></span> </div>
+                <div id="fileSize"> total size: <span>0</span></div>
+                </p>
+                <div id="fileWindow"><output id="selectedFiles"></output></div>
+                <p><input id="uploadButton" class="btn btn-default" type="submit" value="Upload"></p>
+                <div id='progressBar'><div id='bar'></div></div>
+            </form>
+
+            <div th:if="${message}"><h2 id="message" th:text="${message}"/></div>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <!-- Other elements here -->
+    <div id="copyright">
+        Copyright
+    </div>
+</div>
+<script type="text/javascript" src="../static/temp.js"></script>
+</body>
+</html>
+</script>
+</body>
+</html>

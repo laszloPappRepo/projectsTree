@@ -1,0 +1,173 @@
+#body {
+    width: auto;
+    height: auto;
+    background-color: ;
+}
+
+
+.w3-container{
+
+}
+
+#main{
+
+}
+
+#files {
+    border-radius: 8px;
+    background-color: #ffffeb;
+}
+
+#header {
+    height: 100px;
+    width: 87%;
+    float: right;
+    background-color: #a6a6a6;
+    background-image:
+    url("../static/header.png");
+    border-radius: 8px;
+}
+
+#multi{
+    width: 87%;
+    float: right;
+    text-align: left;
+    text-shadow: 2px 2px 8px #b35900;
+    padding-top: 40px;
+    padding-bottom: 70px;
+    padding-left: 200px;
+    letter-spacing: 5px;
+    color:white;
+}
+
+#myContainer {
+}
+
+#distContainer{
+    height: 500px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#formBody{
+    width: 87%;
+    float: right;
+}
+
+#files{
+
+}
+
+#fileNum{
+    display: block;
+    color: #21160b;
+}
+
+#fileSize{
+    text-color: #ffffeb;
+    color: #ffffeb;
+}
+
+#multiP{
+    border-radius: 8px;
+    color:#995c00;
+}
+
+#single{
+    color:#ffa642;
+}
+
+#message{
+    color:#ffffeb;
+}
+
+#success{
+    color:#cb6500;
+}
+
+#upList{
+    color:#ffffeb;
+}
+
+#list{
+    color:#ffffeb;
+}
+
+#fileWindow{
+    width: 90%;
+    height: 200px;
+    overflow: auto;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 10px;
+    text-decoration: light;
+}
+
+#uploadButton{
+    text-color: black;
+}
+
+/* The side navigation menu */
+#openNav{
+    position: fixed;
+}
+
+.sidenav {
+    height: 100%;
+    width: 14%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #060402;
+    opacity: 0.9;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #D2691E;
+}
+
+.main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+/* Progress bar */
+#selectedFiles{
+  color: #ffffeb;
+}
+
+#progressBar{
+   height: 40px;
+   width: 70%;
+   margin-bottom: 20px;
+   border-radius: 8px;
+}
+
+#bar{
+   height: 100%;
+   background: #060402;
+   width: 0%;
+   border-radius: 8px;
+}
+
+
+
+

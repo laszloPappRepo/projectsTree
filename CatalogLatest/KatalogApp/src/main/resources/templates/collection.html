@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="../static/collectionStyle.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Collection</title>
+</head>
+<body id="body">
+<button id="openNav" class="w3-button w3-brown" onclick="openNav()">&#9776;</button>
+
+<div id="mySidenav" class="sidenav">
+    <button id="closebtn" onclick="closeNav()">close &times;</button>
+
+    <a id="home" href="#" th:href="@{/index}">home</a>
+    <a id="coll" href="#" th:href="@{/collection}">collection</a>
+    <a id="dc" href="#" th:href="@{/DCNextWeek}">dc week</a>
+    <a id="mar" href="#" th:href="@{/MarvelNextWeek}">marvel week</a>
+</div>
+
+<div id="main">
+    <!-- Use any element to open the sidenav -->
+
+            <div id="header">
+                <h2 id="head">collection</h2>
+            </div>
+            <div id="headMenu">
+                    <ol id="search">
+                    <form th:action="@{/search}" th:object="${search}" method="get">
+                        <input id="searchField" type="search" name="search" placeholder="get comix :)"/>
+                        <button class="w3-button w3-brown" style="border-radius: 8px;"
+                                id="buttonSearch" type="submit" value="submit">search</button>
+                    </form>
+                    </ol>
+                <ol id="drop">
+
+                </ol>
+                    <ol id="asc">
+                    <form th:action="@{/asc}" th:object="${search}" method="get">
+                        <button class="w3-button w3-brown" style=""
+                                id="buttonAsc" type="submit" value="submit">order asc</button>
+                    </form>
+                    </ol>
+                    <ol id="desc">
+                    <form th:action="@{/desc}" th:object="${search}" method="get">
+                        <button class="w3-button w3-brown" style="border-radius: 8px;"
+                                id="buttonDesc" type="submit" value="submit">order desc</button>
+                    </form>
+                    </ol>
+                    <ol id="ref">
+                    <form th:action="@{/collection}" th:object="${search}" method="get">
+                        <button class="w3-button w3-brown" style="border-radius: 8px;"
+                                id="buttonRefresh" type="submit" value="submit">refresh</button>
+                    </form>
+                    </ol>
+
+            <table class="table">
+                <thead id="thead">
+                <th scope="col" ><div th:if="${message}"><h3 id="message" th:text="${message}"/></div></th>
+                </thead>
+                <tr th:each="comix : ${list}">
+                    <td id="title" th:text="${comix.title}"></td>
+                    <td><img class="zoom" th:src="@{/{id}/image(id=${comix.id})}"></td>
+                    <td>
+                        <th:order>
+                        <a class="w3-button w3-red" style="border-radius: 8px;"
+                           th:href="@{/{id}/delete(id=${comix.id})}"
+                           role="button" onclick="return confirm('Are you sure you want to delete?')">DELETE</a>
+                        </th:order>
+                        <th:order>
+                        <a class="w3-button w3-brown" style="border-radius: 8px;"
+                           th:href="@{/{id}/edit(id=${comix.id})}" role="button">EDIT</a>
+                        </th:order>
+                    </td>
+                    <td id="notes" class="zoomString" th:text="${comix.description}"></td>
+                    <td id="pub" th:text="${comix.publisher}"></td>
+                    <td id="done" th:if="${comix.getReaded()}" style="font-size:32px" class="fa">&#xf046;</td>
+                </tr>
+            </table>
+        </div>
+
+</div>
+<script type="text/javascript" src="../static/collection.js"></script>
+</body>
+</html>

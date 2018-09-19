@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link href="../static/editComix.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <title>Edit your comix</title>
+</head>
+<body id="body">
+<div id="mySidenav" class="sidenav">
+</div>
+
+<div id="main">
+    <!-- Use any element to open the sidenav -->
+    <div id="myContainer" class="w3-teal">
+    </div>
+</div>
+
+<div id="form">
+    <form th:action="@{/{id}/edit (id=${id})}" th:object="${edit}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <input id="tit" class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="title" th:field="*{title}" />
+        <input id="pub" class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="publisher" th:field="*{publisher}" />
+        <textarea id="notes" class="w3-input" placeholder="notes" name="subject" th:field="*{description}"></textarea>
+        <h3 id="check">have u finished it already?</h3>
+        <input id="checkBox" type="checkbox" name="readed" th:checked="${readed}" >
+        <div>
+        <button id="save" class="w3-button w3-amber" style="border-radius: 8px" type="submit" >SAVE</button>
+        </div>
+    </form>
+</div>
+<div id="cover">
+    <img th:src="@{image}" width="400" height="600">
+</div>
+<div id="footer">
+    <!-- Other elements here -->
+    <div id="copyright">
+        Copyright
+            <a id="back" th:href="@{/collection}" style="border-radius: 8px;" class="w3-button w3-khaki">back to collection</a>
+    </div>
+</div>
+<script type="text/javascript" src="../static/edit.js"></script>
+</body>
+</html>

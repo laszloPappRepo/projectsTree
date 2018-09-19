@@ -1,0 +1,113 @@
+#body{
+    width: auto;
+    height: auto;
+    background-color: #21160b;
+    background-image:
+        url("../static/header.png");
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+input[type=search], select {
+    width: 100%;
+    height: 15px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: grey;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: palegoldenrod;
+}
+
+
+a.one{
+    color: lavenderblush;
+    font-size: large;
+    color: #ffa642;
+}
+
+div.link{
+    width: 200px;
+}
+
+#form {
+    width: 50%;
+    border-radius: 5px;
+    padding: 20px;
+    float: right;
+}
+
+#notes{
+}
+
+#cover{
+    width: 50%;
+    border-radius: 5px;
+    padding-left: 70px;
+    padding-top: 20px;
+}
+
+#footer {
+
+}
+
+#copyright {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+}
+
+#check{
+    text-shadow: 2px 2px 8px #b35900;
+    padding-top: 40px;
+    padding-right: 60px;
+    letter-spacing: 5px;
+    color:white;
+}
+
+#back{
+    float: right;
+}
+
+#save{
+    float: right;
+}
+
+#tit{
+    background-color:#a6a5a3;
+}
+
+#pub{
+    background-color:#a6a5a3;
+}
+
+#notes{
+    height: 200px;
+    border-radius: 8px;
+    background-color:#a6a5a3;
+}
