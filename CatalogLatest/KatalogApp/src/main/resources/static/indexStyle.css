@@ -1,12 +1,8 @@
 #body {
     width: auto;
     height: auto;
-    background-color: ;
-}
-
-
-.w3-container{
-
+    background-image:
+                    url("../static/metal-lockscreen.jpg");
 }
 
 #main{
@@ -20,19 +16,39 @@
 
 #header {
     height: 100px;
-    width: 87%;
-    float: right;
-    background-color: #a6a6a6;
+    width: 90%;
+
+    margin-right: auto;
+    margin-left: auto;
+    background-color: ;
     background-image:
-    url("../static/header.png");
+        url("../static/header.png");
+    opacity: 0.4;
     border-radius: 8px;
 }
 
 #multi{
-    width: 87%;
+    width: 90%;
+    float: right;
+    text-align: left;
+    text-shadow: 2px 2px 8px black;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 40px;
+    padding-bottom: 70px;
+    padding-left: 200px;
+    letter-spacing: 5px;
+    color:white;
+    font-size: 32px;
+}
+
+#distText{
+    width: 90%;
     float: right;
     text-align: left;
     text-shadow: 2px 2px 8px #b35900;
+    margin-right: auto;
+    margin-left: auto;
     padding-top: 40px;
     padding-bottom: 70px;
     padding-left: 200px;
@@ -43,17 +59,37 @@
 #myContainer {
 }
 
-#distContainer{
-    height: 500px;
-}
-
 input[type="file"] {
     display: none;
 }
 
 #formBody{
-    width: 87%;
-    float: right;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: ;
+
+    border-radius: 8px;
+}
+
+#uploadContainer{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 8px;
+    background-image:
+        url("../static/Transparent-background.png");
+}
+
+#distContainer{
+    width: 90%;
+    height: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: ;
+    border-radius: 8px;
+    background-image:
+            url("../static/Transparent-background.png");
 }
 
 #files{
@@ -103,10 +139,14 @@ input[type="file"] {
     border-radius: 8px;
     margin: 10px;
     text-decoration: light;
+
 }
 
-#uploadButton{
-    text-color: black;
+.w3-button{
+    border-radius: 8px;
+    background-image:
+            url("../static/Transparent-background.png");
+    color: white;
 }
 
 /* The side navigation menu */
@@ -114,29 +154,36 @@ input[type="file"] {
     position: fixed;
 }
 
+#closebtn{
+
+}
+
 .sidenav {
     height: 100%;
-    width: 14%;
+    width: 0%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #060402;
-    opacity: 0.9;
+    background-image:
+        url("../static/Transparent-background.png");
     overflow-x: hidden;
-    padding-top: 20px;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
 .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: white;
     display: block;
+    padding-top: 30px;
+    transition: 0.3s;
 }
 
 .sidenav a:hover {
-    color: #D2691E;
+    color: #634c31;
 }
 
 .main {
@@ -162,8 +209,10 @@ input[type="file"] {
 }
 
 #bar{
-   height: 100%;
-   background: #060402;
+   height: 90%;
+   color: white;
+   background-image:
+          url("../static/Transparent-background.png");
    width: 0%;
    border-radius: 8px;
 }

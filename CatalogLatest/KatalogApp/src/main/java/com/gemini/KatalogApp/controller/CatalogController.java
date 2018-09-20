@@ -93,7 +93,7 @@ public class CatalogController {
                             if (searchHandlingService.getTitleIfExist(fileName)) {
                                 existingTitles.add(fileName);
                                 redirectAttributes.addFlashAttribute("message",
-                                        existingTitles + " are already exists");
+                                        existingTitles + " already exists");
                             } else {
                                 comixCoverRepo.save(fileHandlingService.fileUpload(uploadedFile));
                                 fileHandlingService.deleteFolderContent(uploadedFile);
@@ -123,10 +123,12 @@ public class CatalogController {
     public String getComixListByTitle(Model model,
                                       String search,
                                       RedirectAttributes redirectAttributes){
-        if (comixCoverRepo.findAllByTitleIsContaining("%" + search + "%").size() > 0) {
-            model.addAttribute("list", comixCoverRepo.findAllByTitleIsContaining(search));
+        if (comixCoverRepo.findAllByTitleIsContaining("%" + search + "%").size() == 0 || search.length() == 0) {
+            redirectAttributes.addFlashAttribute("noFound", "there is no such comix :(");
+            return "redirect:/collection";
         }else {
-            redirectAttributes.addFlashAttribute("message", "there is no such comix :(");
+            model.addAttribute("list", comixCoverRepo.findAllByTitleIsContaining(search));
+
         }
         return "collection";
     }

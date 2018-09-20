@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Edit your comix</title>
 </head>
 <body id="body">
@@ -18,16 +19,16 @@
     </div>
 </div>
 
-<div id="form">
+<div id="form" class="w3-panel w3-border w3-round-xlarge">
     <form th:action="@{/{id}/edit (id=${id})}" th:object="${edit}" method="post">
         <input type="hidden" th:field="*{id}"/>
-        <input id="tit" class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="title" th:field="*{title}" />
-        <input id="pub" class="col-xs-4 input-sm" style="size: 16px" type="text" placeholder="publisher" th:field="*{publisher}" />
+        <input id="tit" class="w3-panel w3-border w3-round-xlarge" style="size: 16px" type="text" placeholder="title" th:field="*{title}" />
+        <input id="pub" class="w3-panel w3-border w3-round-xlarge" style="size: 16px" type="text" placeholder="publisher" th:field="*{publisher}" />
         <textarea id="notes" class="w3-input" placeholder="notes" name="subject" th:field="*{description}"></textarea>
         <h3 id="check">have u finished it already?</h3>
         <input id="checkBox" type="checkbox" name="readed" th:checked="${readed}" >
         <div>
-        <button id="save" class="w3-button w3-amber" style="border-radius: 8px" type="submit" >SAVE</button>
+        <button id="save" class="w3-button" style="color: white;" type="submit" ><i class="fa fa-save"></i> SAVE</button>
         </div>
     </form>
 </div>
@@ -38,7 +39,8 @@
     <!-- Other elements here -->
     <div id="copyright">
         Copyright
-            <a id="back" th:href="@{/collection}" style="border-radius: 8px;" class="w3-button w3-khaki">back to collection</a>
+            <a id="back" th:href="@{/collection}" style="color: white;" class="w3-button">
+                <i class="fa fa-backward"></i> back to collection</a>
     </div>
 </div>
 <script type="text/javascript" src="../static/edit.js"></script>
