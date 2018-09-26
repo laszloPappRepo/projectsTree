@@ -2,8 +2,7 @@ body {
     width: auto;
     height: auto;
     background-image:
-    url("https://images2.alphacoders.com/564/564784.jpg");
-    background-repeat: repeat;
+                    url("../static/Transparent-background.png");
 }
 
 hi {
@@ -79,4 +78,14 @@ div.link{
 
 #userNot{
     color: black;
+}
+
+img {
+        display: none;
+        cursor: pointer;
+ }
+
+span {
+   cursor: pointer;
+   display: block;
 }

@@ -11,8 +11,12 @@
 <hi>ewoKatalog</hi>
 <form th:action="@{/login}" th:object="${search}" method="get">
     <input type="text" name="username" placeholder="username"/>
-    <input type="password" name="password" placeholder="password"/>
+    <input id="pass" onclick="myFunction"
+           type="password" name="password" placeholder="password"/>
     <button type="submit" value="Submit">Submit</button>
+    <a href = "#">
+        <img id="myImage" src="../static/ewok.png"/> <span></span>
+    </a>
     <div id="userNot" th:if="${message}">
         <h2 id="message" th:text="${message}"/>
     </div>
@@ -28,5 +32,10 @@
 <div>
     <nav><a id="newUser" href="/newUser">Create new account</a></nav>
 </div>
+<script type='text/javascript'>
+function myFunction() {
+    document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+}
+</script>
 </body>
 </html>

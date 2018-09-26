@@ -1,19 +1,15 @@
 package com.gemini.KatalogApp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
+@Entity(name = "ACCOUNT")
 public class Account {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
     private String username;
-
-    @JsonIgnore
     private String password;
-
     private String confirmPassword;
 
     public Account() { } // JPA only
@@ -46,6 +42,14 @@ public class Account {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 

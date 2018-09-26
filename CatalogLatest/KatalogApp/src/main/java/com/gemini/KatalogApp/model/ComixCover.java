@@ -1,21 +1,19 @@
 package com.gemini.KatalogApp.model;
 
 import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "COMIX_COVER")
 public class ComixCover {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     public String title;
-    @Column(name="COMICCOVER", nullable=false, columnDefinition = "LONGBLOB")
+    @Column(nullable=false, columnDefinition = "LONGBLOB")
     public byte[] comicCover;
     public String publisher;
     public Boolean readed = false;
-    @Column(name = "description")
     @Type(type="text")
     public String description;
 

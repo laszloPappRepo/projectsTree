@@ -38,8 +38,6 @@ public class LoginController {
         }else {
             redirectAttributes.addFlashAttribute("message", "The username: "
                     + "'" + username + "'" + " and/or the password: " + "'" + password + "'" + " does not exist.");
-            //model.addAttribute("message", new NotFoundException("The username: " + username
-              //      + " and/or the password: " + password + " does not exist."));
             return "redirect:/";
         }
     }

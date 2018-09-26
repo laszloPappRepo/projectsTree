@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface AccountRepository extends CrudRepository<Account, Long> {
     //Optional<Account> findByUsername(String username);
-    @Query(value = "SELECT * FROM catalog.account", nativeQuery = true)
+    @Query(value = "SELECT * FROM ACCOUNT", nativeQuery = true)
     List<Account> listAll();
 }
