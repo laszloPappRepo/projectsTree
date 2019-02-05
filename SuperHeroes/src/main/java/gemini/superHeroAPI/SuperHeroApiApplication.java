@@ -1,5 +1,4 @@
 package gemini.superHeroAPI;
-import gemini.superHeroAPI.Service.LoginValidationService;
 import gemini.superHeroAPI.Service.SuperHeroApiService;
 import gemini.superHeroAPI.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class SuperHeroApiApplication implements CommandLineRunner {
 		SpringApplication.run(SuperHeroApiApplication.class, args);
 	}
 
-	LoginValidationService loginValidationService;
+	//LoginValidationService loginValidationService;
 
 	@Autowired
 	AccountRepository accountRepository;
@@ -28,7 +27,7 @@ public class SuperHeroApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-        System.out.println(superHeroApiService.getHeroResponseFromSuperHeroAPIByID(70L).toString());
+        //System.out.println(superHeroApiService.getHeroResponseFromSuperHeroAPIByID(70L).toString());
 	}
 
 	@Configuration

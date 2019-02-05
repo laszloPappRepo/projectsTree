@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <title>uj tofi</title>
+</head>
+<body>
+<div class="table-responsive">
+    <nav>
+        <a class="one" href="/index">Back to the Main</a>
+    </nav>
+</div>
+<h1 style="color: lavenderblush">Add new Tofi</h1>
+<div>
+    <form th:action="@{/newTofi}" style="left: auto" th:object="${newTofi}" method="post">
+        <input class="col-xs-4 input-sm" type="text" placeholder="name" th:field="*{name}" />
+        <input class="col-xs-4 input-sm" type="text" placeholder="pet" th:field="*{pet}" />
+        <button class="btn btn-info btn-lg" type="submit" value="submit" >ADD</button>
+    </form>
+</div>
+</body>
+</html>

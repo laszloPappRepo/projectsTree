@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <title>Tofi</title>
+</head>
+<body>
+<h1>Hello Toffancs!</h1>
+<div class="link">
+    <nav>
+        <a class="one" href="/newTofi">Add new Tofi</a>
+    </nav>
+</div>
+
+<table class="table table-hover table-dark" style="font-size: small">
+    <thead>
+    <tr>
+        <th scope="col" >ID</th>
+        <th scope="col" >NAME</th>
+        <th scope="col" >PET</th>
+    </thead>
+    <tr th:each="tofi : ${list}">
+        <td th:text="${tofi.id}" ></td>
+        <td th:text="${tofi.name}" ></td>
+        <td th:text="${tofi.pet}" ></td>
+</table>
+</body>
+</html>
